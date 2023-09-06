@@ -247,8 +247,8 @@ def zbrushFileProcess(path, file_name):
 # References the clicked Maya file inside the currently opened one
 def referenceMayaFile(ui, index, file_name):
     # Get the full path
-    path = contextMenusLibs.getPathToItem(index)
-    path = str(Path.as_posix(path))
+    path = fileLibs.getItemPath(index)
+    path = str(Path(path).as_posix())
     # Create the command
     reference_command = f'import maya.cmds as cmds; cmds.file("{path}", reference=1, namespace="{file_name}")'
     # Execute the command
@@ -264,8 +264,8 @@ def referenceMayaFile(ui, index, file_name):
 # Imports the clicked Maya file inside the currently opened one
 def importMayaFile(ui, index, file_name):
     # Get the full path
-    path = contextMenusLibs.getPathToItem(index)
-    path = str(Path.as_posix(path))
+    path = fileLibs.getItemPath(index)
+    path = str(Path(path).as_posix())
     # Create the command
     import_command = f'import maya.cmds as cmds; cmds.file("{path}", i=1, namespace="{file_name}")'
     # Execute the command
