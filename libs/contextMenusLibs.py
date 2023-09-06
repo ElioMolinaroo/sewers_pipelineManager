@@ -3,6 +3,8 @@ import shutil
 from pathlib import Path
 
 from libs import fileLibs
+from apps import socketApp
+from libs import socketLibs
 from libs import projectLibs
 
 
@@ -68,3 +70,21 @@ def createZbrushFile(name, path):
     os.rename(old_file, new_file)
 
     print(f'Successfully created file {name.upper()}.zpr.')
+
+
+# Check if the file provided is currently open in Maya
+def isMayaFileOpen(ui, file_path):
+    # Check if Maya is open and connected
+    maya_connection = socketLibs.isConnectedToMaya(ui)
+
+    if maya_connection is False:
+        return False
+    else:
+        # Get maya path
+        maya_open_file = socketApp.sendMayaCommandProcess(ui, 'cmds.file(q=1, sn=1)')
+        
+        # Compare both paths
+        is_open = True if str(Path(file_path).as_posix) == str(Path(maya_open_file).as_posix) else False
+
+        return is_open
+    

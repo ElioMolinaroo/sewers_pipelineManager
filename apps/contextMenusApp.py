@@ -161,23 +161,29 @@ def deleteFile(ui, index):
     path_to_file = str(Path(str(file_path).removesuffix(file_name)))
     trash_folder = str(Path.cwd() / 'trash')
 
-    # Move the folder to the trash
-    test_path = Path(trash_folder) / file_name
-    if test_path.exists() is True:
-        path_file_in_trash = test_path
-        path_file_in_trash.unlink()
-        shutil.move(file_path, trash_folder)
+    # Check if file to be renamed is open in Maya
+    is_file_open = contextMenusLibs.isMayaFileOpen(ui, file_path)
+
+    if is_file_open is True:
+        print("ERROR: The file you're trying to delete is currently open in Maya, open another file and try again...")
     else:
-        shutil.move(file_path, trash_folder)
+        # Move the folder to the trash
+        test_path = Path(trash_folder) / file_name
+        if test_path.exists() is True:
+            path_file_in_trash = test_path
+            path_file_in_trash.unlink()
+            shutil.move(file_path, trash_folder)
+        else:
+            shutil.move(file_path, trash_folder)
 
-    # Refresh explorer
-    ui.fileManagerColumnView.update()
-    # Update the UI to the selected path
-    model = ui.model
-    # Navigates to the file in the file explorer
-    ui.fileManagerColumnView.setCurrentIndex(model.index(path_to_file))
+        # Refresh explorer
+        ui.fileManagerColumnView.update()
+        # Update the UI to the selected path
+        model = ui.model
+        # Navigates to the file in the file explorer
+        ui.fileManagerColumnView.setCurrentIndex(model.index(path_to_file))
 
-    print(f'Successfully moved {file_name.upper()} to the trash folder.')
+        print(f'Successfully moved {file_name.upper()} to the trash folder.')
 
 
 # In the explorer, renames the selected file to the given string
@@ -193,17 +199,23 @@ def renameFile(ui, index, new_file_name):
     new_file_name = f'{new_file_name}{extension}'
     new_file_path = str(Path(str(old_file_path).replace(old_file_name, new_file_name)))
 
-    # Rename the file
-    os.rename(old_file_path, new_file_path)
+    # Check if file to be renamed is open in Maya
+    is_file_open = contextMenusLibs.isMayaFileOpen(ui, old_file_path)
 
-    # Refresh explorer
-    ui.fileManagerColumnView.update()
-    # Update the UI to the selected path
-    model = ui.model
-    # Navigates to the file in the file explorer
-    ui.fileManagerColumnView.setCurrentIndex(model.index(new_file_path))
+    if is_file_open is True:
+        print("ERROR: The file you're trying to rename is currently open in Maya, open another file and try again...")
+    else:
+        # Rename the file
+        os.rename(old_file_path, new_file_path)
 
-    print(f'Successfully renamed {old_file_name.upper()} to {new_file_name.upper()}.')
+        # Refresh explorer
+        ui.fileManagerColumnView.update()
+        # Update the UI to the selected path
+        model = ui.model
+        # Navigates to the file in the file explorer
+        ui.fileManagerColumnView.setCurrentIndex(model.index(new_file_path))
+
+        print(f'Successfully renamed {old_file_name.upper()} to {new_file_name.upper()}.')
 
 
 # Crates a folder in the specified directory in the explorer
