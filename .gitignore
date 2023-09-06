@@ -1,1 +1,4 @@
 venv/
+trash/test.ma
+temp/temp_mel_launcher.mel
+*.pyc
