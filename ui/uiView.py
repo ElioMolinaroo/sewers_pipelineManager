@@ -104,7 +104,6 @@ class SewersUI(QMainWindow):
         self.assetListWidget.installEventFilter(self)
 
         # File Explorer module events
-        self.fileManagerColumnView.doubleClicked.connect(lambda: sewersController.openFileFromExplorer(self, self.fileManagerColumnView))
         self.fileManagerColumnView.activated.connect(lambda: sewersController.openFileFromExplorer(self, self.fileManagerColumnView))
         self.fileManagerColumnView.clicked.connect(lambda: sewersController.updateViewerInfo(self, self.fileManagerColumnView))
 

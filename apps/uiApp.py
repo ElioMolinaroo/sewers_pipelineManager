@@ -194,7 +194,10 @@ def updateCommentButtonCount(ui, explorer_widget):
     dummy_stdout = open('temp/dummy_std', 'w')
     sys.stdout = dummy_stdout
     # Call the function and store its return value inside variables
-    asset_path, asset_name = assetViewerApp.isUserInAsset(explorer_widget)
+    try:
+        asset_path, asset_name = assetViewerApp.isUserInAsset(explorer_widget)
+    except:
+        asset_path = None
     # Restore the original stdout
     dummy_stdout.close()
     sys.stdout = original_stdout
