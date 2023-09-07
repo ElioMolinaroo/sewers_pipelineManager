@@ -170,9 +170,13 @@ def createProjectProcess(ui):
         path_exists = Path.exists(Path(project_path))
 
     if path_exists is True and len(project_name) != 0:
-        # Create the project
-        projectApp.createProject(project_name, project_path, project_template)
-        ui.create_project_signal.emit()
+        complete_path = Path(project_path) / project_name
+        if complete_path.exists() is False:
+            # Create the project
+            projectApp.createProject(project_name, project_path, project_template)
+            ui.create_project_signal.emit()
+        else:
+            print("ERROR: The project you're trying to create already exists in this directory, try another name or another location...")
     else:
         print('ERROR: Missing critical project information to create it...')
 
