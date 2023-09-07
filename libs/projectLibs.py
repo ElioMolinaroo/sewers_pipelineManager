@@ -96,6 +96,7 @@ def setCurrentProject(ui, current_project_database=CURRENT_PROJECT_DATABASE):
         ui.fileManagerColumnView.setRootIndex(model.index(project_cookies[1]))
         # Update the UI
         uiLibs.enableButtons(ui)
+        uiLibs.projectTypeChangeUI(ui)
 
         print(f'Project {str.upper(project_cookies[0])} has been set successfully.')
     else:

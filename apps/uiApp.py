@@ -45,6 +45,9 @@ def prepUi(ui):
     # Update the assets
     browserUpdateAssets(ui)
 
+    # Update the UI according to the project type
+    uiLibs.projectTypeChangeUI(ui)
+
     return model
 
 

@@ -4,6 +4,8 @@ import qdarktheme
 from PyQt6.QtGui import QIcon
 
 from control import sewersController
+from libs import loginLibs
+from libs import projectLibs
 
 
 # Returns the name of the action required by the user in a combo box
@@ -91,3 +93,29 @@ def setToLightTheme(ui):
     ui.setProjectButton.setIcon(QIcon(str(Path.cwd() / 'icons' / 'setProject.png')))
     ui.assetIconButton.setIcon(QIcon(str(Path.cwd() / 'icons' / 'takeSnapshotButton.png')))
     ui.userIcon.setIcon(QIcon(str(Path.cwd() / 'icons' / 'userLogo.png')))
+
+
+# Modifies the UI elements accessibility according to a project type
+def projectTypeChangeUI(ui):
+    project_data = loginLibs.loadJsonData(projectLibs.CURRENT_PROJECT_DATABASE)
+    if len(project_data) != 0:
+        project_type = project_data['project_type']
+    else:
+        project_type = ''
+
+    match project_type:
+        case '':
+            ui.rightHandTabs.setTabEnabled(0, False)
+            ui.rightHandTabs.setTabEnabled(1, False)
+            ui.addCommentButton.setEnabled(False)
+            ui.reviewCommentsButton.setEnabled(False)
+        case 'asset':
+            ui.rightHandTabs.setTabEnabled(0, False)
+            ui.rightHandTabs.setTabEnabled(1, False)
+            ui.addCommentButton.setEnabled(False)
+            ui.reviewCommentsButton.setEnabled(False)
+        case 'pipeline':
+            ui.rightHandTabs.setTabEnabled(0, True)
+            ui.rightHandTabs.setTabEnabled(1, True)
+            ui.addCommentButton.setEnabled(True)
+            ui.reviewCommentsButton.setEnabled(True)

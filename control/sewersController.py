@@ -140,6 +140,7 @@ def loadProject(ui):
 
         # Update the UI
         uiLibs.enableButtons(ui)
+        uiLibs.projectTypeChangeUI(ui)
     else:
         print("WARNING: Couldn't set this project, path must be invalid...")
 
