@@ -18,7 +18,7 @@ def prepareLoadProject(ui):
 
         # Replace cookies in the current project database
         current_cookies_path = projectLibs.CURRENT_PROJECT_DATABASE
-        cookies_entry = projectLibs.formatProjectData(project_name, project_path, [], '', '')
+        cookies_entry = projectLibs.formatProjectData(project_name, project_path, [], '', '', '')
         loginLibs.registerCookies(cookies_entry, current_cookies_path)
 
         # Enter cookies in the projects database

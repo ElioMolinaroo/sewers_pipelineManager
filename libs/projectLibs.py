@@ -55,12 +55,13 @@ def getFolderName(path=str):
 
 
 # Creates the formatting of the project data into a dictionary entry
-def formatProjectData(project_name: str, project_path: str, project_artists: list, assets_path: str, shots_path: str):
+def formatProjectData(project_name: str, project_path: str, project_artists: list, assets_path: str, shots_path: str, project_type: str):
     return {"name": project_name,
             "path": project_path,
             "artists": project_artists,
             "assets_path": assets_path,
-            "shots_path": shots_path}
+            "shots_path": shots_path, 
+            "project_type": project_type}
 
 
 # Sets the project UI widgets to their default
