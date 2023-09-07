@@ -16,9 +16,19 @@ def prepareLoadProject(ui):
         # Get the name of the project
         project_name = projectLibs.getFolderName(project_path)
 
+        # Look for a project_data.json file
+        if Path(Path(project_path) / 'project_data.json').exists() is True:
+            # Look for a 09_print folder (means it's a pipeline project)
+            if Path(Path(project_path) / '09_print').exists() is True:
+                project_type = 'pipeline'
+            elif Path(Path(project_path) / '04_workspace').exists() is True:
+                project_type = 'asset'
+        else:
+            project_type = ''
+
         # Replace cookies in the current project database
         current_cookies_path = projectLibs.CURRENT_PROJECT_DATABASE
-        cookies_entry = projectLibs.formatProjectData(project_name, project_path, [], '', '', '')
+        cookies_entry = projectLibs.formatProjectData(project_name, project_path, [], '', '', project_type)
         loginLibs.registerCookies(cookies_entry, current_cookies_path)
 
         # Enter cookies in the projects database
