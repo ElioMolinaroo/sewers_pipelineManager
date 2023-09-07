@@ -124,7 +124,9 @@ def loadProject(ui):
     project_data = projectApp.prepareLoadProject(ui)
 
     # Check if a project directory was chosen
-    if project_data[0] != 'C:/':
+    if project_data[0] == '':
+        pass
+    elif project_data[0] != 'C:/':
         project_path = project_data[0]
         project_name = project_data[1]
         project_artists = project_data[2]
