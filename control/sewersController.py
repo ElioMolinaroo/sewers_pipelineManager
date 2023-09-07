@@ -137,6 +137,9 @@ def loadProject(ui):
         ui.projectNameLabel.setText(str.upper(project_name))
         model = ui.model
         ui.fileManagerColumnView.setRootIndex(model.index(project_path))
+
+        # Update the UI
+        uiLibs.enableButtons(ui)
     else:
         print("WARNING: Couldn't set this project, path must be invalid...")
 
