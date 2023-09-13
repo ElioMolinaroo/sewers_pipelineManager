@@ -25,6 +25,8 @@ def writePathToDisk(hou_path: str, file_name):
     text_file.write(hou_path)
     text_file.close()
 
-
-path = getHouPath()
-writePathToDisk(path, 'houdiniPythonLibsPath.txt')
+try:
+    path = getHouPath()
+    writePathToDisk(path, 'houdiniPythonLibsPath.txt')
+except:
+    print('Houdini was not found, skipped path fetching...')
