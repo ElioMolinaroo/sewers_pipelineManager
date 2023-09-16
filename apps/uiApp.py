@@ -48,6 +48,11 @@ def prepUi(ui):
     # Update the UI according to the project type
     uiLibs.projectTypeChangeUI(ui)
 
+    # Set the scaling on the splitter between the three elements
+    ui.centralSplitter.setStretchFactor(0, 0)
+    ui.centralSplitter.setStretchFactor(1, 1)
+    ui.centralSplitter.setStretchFactor(2, 0)
+
     return model
 
 

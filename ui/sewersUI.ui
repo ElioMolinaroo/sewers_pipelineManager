@@ -22,65 +22,53 @@
    <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,1,0">
-    <property name="leftMargin">
-     <number>9</number>
-    </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
-     <layout class="QVBoxLayout" name="leftBlockLayout" stretch="0,0,1">
-      <property name="sizeConstraint">
-       <enum>QLayout::SetDefaultConstraint</enum>
+     <widget class="QSplitter" name="centralSplitter">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
       </property>
-      <property name="topMargin">
-       <number>10</number>
+      <property name="opaqueResize">
+       <bool>true</bool>
       </property>
-      <property name="bottomMargin">
-       <number>10</number>
+      <property name="handleWidth">
+       <number>6</number>
       </property>
-      <item>
-       <layout class="QGridLayout" name="loginLayout">
-        <property name="leftMargin">
-         <number>25</number>
+      <property name="childrenCollapsible">
+       <bool>false</bool>
+      </property>
+      <widget class="QWidget" name="layoutWidget">
+       <layout class="QVBoxLayout" name="leftBlockLayout" stretch="0,0,1">
+        <property name="sizeConstraint">
+         <enum>QLayout::SetDefaultConstraint</enum>
         </property>
-        <property name="rightMargin">
-         <number>25</number>
+        <property name="topMargin">
+         <number>10</number>
         </property>
-        <item row="3" column="0" colspan="3">
-         <widget class="QLabel" name="userRoleLabel">
-          <property name="maximumSize">
-           <size>
-            <width>175</width>
-            <height>16777215</height>
-           </size>
+        <property name="bottomMargin">
+         <number>10</number>
+        </property>
+        <item>
+         <layout class="QGridLayout" name="loginLayout">
+          <property name="leftMargin">
+           <number>25</number>
           </property>
-          <property name="font">
-           <font>
-            <family>Segoe UI</family>
-            <pointsize>12</pointsize>
-            <bold>false</bold>
-           </font>
+          <property name="rightMargin">
+           <number>25</number>
           </property>
-          <property name="text">
-           <string>_____</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignHCenter|Qt::AlignTop</set>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="0" colspan="3">
-         <widget class="QComboBox" name="loginButton">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>30</height>
-           </size>
-          </property>
-          <property name="layoutDirection">
-           <enum>Qt::LeftToRight</enum>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QComboBox {
+          <item row="4" column="0" colspan="3">
+           <widget class="QComboBox" name="loginButton">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="layoutDirection">
+             <enum>Qt::LeftToRight</enum>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QComboBox {
 
     border-radius: 3px;
     padding: 2px;
@@ -115,456 +103,204 @@ QComboBox::indicator:editable {
     image: url(icons/logIn.png); /* Replace with your own icon image path */
 }
 </string>
-          </property>
-          <property name="editable">
-           <bool>false</bool>
-          </property>
-          <property name="insertPolicy">
-           <enum>QComboBox::InsertAtBottom</enum>
-          </property>
-          <property name="frame">
-           <bool>true</bool>
-          </property>
-          <item>
-           <property name="text">
-            <string>Login / Register</string>
-           </property>
+            </property>
+            <property name="editable">
+             <bool>false</bool>
+            </property>
+            <property name="insertPolicy">
+             <enum>QComboBox::InsertAtBottom</enum>
+            </property>
+            <property name="frame">
+             <bool>true</bool>
+            </property>
+            <item>
+             <property name="text">
+              <string>Login / Register</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Login</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Register</string>
+             </property>
+            </item>
+           </widget>
           </item>
-          <item>
-           <property name="text">
-            <string>Login</string>
-           </property>
+          <item row="5" column="0" colspan="3">
+           <widget class="QPushButton" name="logoutButton">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>  Logout</string>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>../icons/logOut.png</normaloff>../icons/logOut.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>20</width>
+              <height>16</height>
+             </size>
+            </property>
+           </widget>
           </item>
-          <item>
-           <property name="text">
-            <string>Register</string>
-           </property>
-          </item>
-         </widget>
-        </item>
-        <item row="4" column="0">
-         <spacer name="titleButtonsSpacer">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>15</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="6" column="0" colspan="3">
-         <widget class="QPushButton" name="logoutButton">
-          <property name="enabled">
-           <bool>false</bool>
-          </property>
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>30</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>175</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>  Logout</string>
-          </property>
-          <property name="icon">
-           <iconset>
-            <normaloff>../icons/logOut.png</normaloff>../icons/logOut.png</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>20</width>
-            <height>16</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0">
-         <widget class="QPushButton" name="userIcon">
-          <property name="minimumSize">
-           <size>
-            <width>40</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton {
+          <item row="2" column="0">
+           <widget class="QPushButton" name="userIcon">
+            <property name="minimumSize">
+             <size>
+              <width>40</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>40</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
     background-color: transparent;
     border: none;
 }</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="icon">
-           <iconset>
-            <normaloff>../icons/userLogo.png</normaloff>../icons/userLogo.png</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>40</width>
-            <height>40</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="1" colspan="2">
-         <widget class="QLabel" name="usernameLabel">
-          <property name="maximumSize">
-           <size>
-            <width>175</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Segoe UI</family>
-            <pointsize>15</pointsize>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="text">
-           <string>_____</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <widget class="QLabel" name="recentFilesLabel">
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Recent Files</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QListWidget" name="recentFilesListWidget">
-        <property name="minimumSize">
-         <size>
-          <width>175</width>
-          <height>320</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>175</width>
-          <height>16777215</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>8</pointsize>
-         </font>
-        </property>
-        <property name="isWrapping" stdset="0">
-         <bool>false</bool>
-        </property>
-        <property name="spacing">
-         <number>2</number>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <layout class="QVBoxLayout" name="centralBlockLayout" stretch="0,1,0">
-      <property name="sizeConstraint">
-       <enum>QLayout::SetDefaultConstraint</enum>
-      </property>
-      <property name="bottomMargin">
-       <number>10</number>
-      </property>
-      <item>
-       <layout class="QHBoxLayout" name="projectBarLayout" stretch="0,0">
-        <property name="leftMargin">
-         <number>20</number>
-        </property>
-        <property name="rightMargin">
-         <number>40</number>
-        </property>
-        <item>
-         <widget class="QLabel" name="projectNameLabel">
-          <property name="font">
-           <font>
-            <pointsize>13</pointsize>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="text">
-           <string>NO PROJECT</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="projectButtonsLayout">
-          <property name="spacing">
-           <number>17</number>
-          </property>
-          <property name="topMargin">
-           <number>10</number>
-          </property>
-          <property name="bottomMargin">
-           <number>10</number>
-          </property>
-          <item>
-           <widget class="QPushButton" name="setProjectButton">
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>35</height>
-             </size>
             </property>
             <property name="text">
-             <string>  Set</string>
+             <string/>
             </property>
             <property name="icon">
              <iconset>
-              <normaloff>../icons/setProject.png</normaloff>../icons/setProject.png</iconset>
+              <normaloff>../icons/userLogo.png</normaloff>../icons/userLogo.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>40</width>
+              <height>40</height>
+             </size>
             </property>
            </widget>
           </item>
-          <item>
-           <widget class="QPushButton" name="createProjectButton">
-            <property name="minimumSize">
+          <item row="3" column="0">
+           <spacer name="titleButtonsSpacer">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
              <size>
-              <width>0</width>
-              <height>35</height>
+              <width>20</width>
+              <height>15</height>
              </size>
             </property>
-            <property name="text">
-             <string>  Create</string>
-            </property>
-            <property name="icon">
-             <iconset>
-              <normaloff>../icons/createProject.png</normaloff>../icons/createProject.png</iconset>
-            </property>
-           </widget>
+           </spacer>
           </item>
-          <item>
-           <widget class="QPushButton" name="loadProjectButton">
-            <property name="minimumSize">
+          <item row="2" column="1" colspan="2">
+           <widget class="QLabel" name="usernameLabel">
+            <property name="maximumSize">
              <size>
-              <width>0</width>
-              <height>35</height>
+              <width>175</width>
+              <height>16777215</height>
              </size>
             </property>
-            <property name="text">
-             <string>  Load</string>
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+              <pointsize>15</pointsize>
+              <bold>true</bold>
+             </font>
             </property>
-            <property name="icon">
-             <iconset>
-              <normaloff>../icons/loadProject.png</normaloff>../icons/loadProject.png</iconset>
+            <property name="text">
+             <string>_____</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
             </property>
            </widget>
           </item>
          </layout>
         </item>
-       </layout>
-      </item>
-      <item>
-       <widget class="QColumnView" name="fileManagerColumnView"/>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="fileManagementButtonsLayout">
-        <property name="spacing">
-         <number>20</number>
-        </property>
-        <property name="leftMargin">
-         <number>20</number>
-        </property>
-        <property name="topMargin">
-         <number>10</number>
-        </property>
-        <property name="rightMargin">
-         <number>20</number>
-        </property>
         <item>
-         <widget class="QPushButton" name="saveVersionButton">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>50</height>
-           </size>
+         <widget class="QLabel" name="recentFilesLabel">
+          <property name="font">
+           <font>
+            <pointsize>11</pointsize>
+            <bold>true</bold>
+           </font>
           </property>
           <property name="text">
-           <string>  Save Version</string>
-          </property>
-          <property name="icon">
-           <iconset>
-            <normaloff>../icons/saveVersion.png</normaloff>../icons/saveVersion.png</iconset>
+           <string>Recent Files</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="publishButton">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
+         <widget class="QListWidget" name="recentFilesListWidget">
           <property name="minimumSize">
            <size>
-            <width>0</width>
-            <height>50</height>
+            <width>175</width>
+            <height>320</height>
            </size>
           </property>
-          <property name="text">
-           <string>  Publish</string>
-          </property>
-          <property name="icon">
-           <iconset>
-            <normaloff>../icons/publish.png</normaloff>../icons/publish.png</iconset>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="playblastButton">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
+          <property name="maximumSize">
            <size>
-            <width>0</width>
-            <height>50</height>
+            <width>16777215</width>
+            <height>16777215</height>
            </size>
           </property>
-          <property name="text">
-           <string>  Playblast</string>
+          <property name="font">
+           <font>
+            <pointsize>8</pointsize>
+           </font>
           </property>
-          <property name="icon">
-           <iconset>
-            <normaloff>../icons/playblast.png</normaloff>../icons/playblast.png</iconset>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <widget class="QTabWidget" name="rightHandTabs">
-      <property name="minimumSize">
-       <size>
-        <width>0</width>
-        <height>0</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>215</width>
-        <height>16777215</height>
-       </size>
-      </property>
-      <property name="tabPosition">
-       <enum>QTabWidget::North</enum>
-      </property>
-      <property name="currentIndex">
-       <number>1</number>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>16</width>
-        <height>16</height>
-       </size>
-      </property>
-      <widget class="QWidget" name="creationTab">
-       <attribute name="title">
-        <string>Creator</string>
-       </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_2">
-        <property name="spacing">
-         <number>0</number>
-        </property>
-        <property name="leftMargin">
-         <number>0</number>
-        </property>
-        <property name="topMargin">
-         <number>0</number>
-        </property>
-        <property name="rightMargin">
-         <number>0</number>
-        </property>
-        <property name="bottomMargin">
-         <number>0</number>
-        </property>
-        <item>
-         <layout class="QGridLayout" name="creationLayout" columnstretch="0,0">
-          <property name="leftMargin">
-           <number>14</number>
-          </property>
-          <property name="topMargin">
-           <number>15</number>
-          </property>
-          <property name="rightMargin">
-           <number>12</number>
-          </property>
-          <property name="bottomMargin">
-           <number>10</number>
+          <property name="isWrapping" stdset="0">
+           <bool>false</bool>
           </property>
           <property name="spacing">
-           <number>15</number>
+           <number>2</number>
           </property>
-          <item row="1" column="0">
-           <widget class="QLabel" name="createLabel">
-            <property name="font">
-             <font>
-              <pointsize>11</pointsize>
-              <italic>false</italic>
-              <underline>false</underline>
-             </font>
-            </property>
-            <property name="text">
-             <string>CREATE: </string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="0" colspan="2">
-           <widget class="QLabel" name="creatorTitleLabel">
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="layoutWidget">
+       <layout class="QVBoxLayout" name="centralBlockLayout" stretch="0,1,0">
+        <property name="sizeConstraint">
+         <enum>QLayout::SetMaximumSize</enum>
+        </property>
+        <property name="bottomMargin">
+         <number>10</number>
+        </property>
+        <item>
+         <layout class="QHBoxLayout" name="projectBarLayout" stretch="0,0">
+          <property name="leftMargin">
+           <number>20</number>
+          </property>
+          <property name="rightMargin">
+           <number>40</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="projectNameLabel">
             <property name="font">
              <font>
               <pointsize>13</pointsize>
@@ -572,453 +308,728 @@ QComboBox::indicator:editable {
              </font>
             </property>
             <property name="text">
-             <string>SEWERS CREATOR</string>
+             <string>NO PROJECT</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
             </property>
            </widget>
           </item>
-          <item row="3" column="0" colspan="2">
-           <widget class="QPushButton" name="createTemplateButton">
+          <item>
+           <layout class="QHBoxLayout" name="projectButtonsLayout">
+            <property name="spacing">
+             <number>17</number>
+            </property>
+            <property name="topMargin">
+             <number>10</number>
+            </property>
+            <property name="bottomMargin">
+             <number>10</number>
+            </property>
+            <item>
+             <widget class="QPushButton" name="setProjectButton">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>35</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>  Set</string>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>../icons/setProject.png</normaloff>../icons/setProject.png</iconset>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="createProjectButton">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>35</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>  Create</string>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>../icons/createProject.png</normaloff>../icons/createProject.png</iconset>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="loadProjectButton">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>35</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>  Load</string>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>../icons/loadProject.png</normaloff>../icons/loadProject.png</iconset>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QColumnView" name="fileManagerColumnView"/>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="fileManagementButtonsLayout">
+          <property name="spacing">
+           <number>20</number>
+          </property>
+          <property name="leftMargin">
+           <number>20</number>
+          </property>
+          <property name="topMargin">
+           <number>10</number>
+          </property>
+          <property name="rightMargin">
+           <number>20</number>
+          </property>
+          <item>
+           <widget class="QPushButton" name="playblastButton">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>35</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>35</height>
+              <height>50</height>
              </size>
             </property>
             <property name="text">
-             <string>Create</string>
+             <string>  Playblast</string>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>../icons/playblast.png</normaloff>../icons/playblast.png</iconset>
             </property>
            </widget>
           </item>
-          <item row="1" column="1">
-           <widget class="QComboBox" name="createTypeComboBox">
+          <item>
+           <widget class="QPushButton" name="saveVersionButton">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>30</height>
+              <height>50</height>
              </size>
             </property>
-            <property name="maximumSize">
-             <size>
-              <width>100</width>
-              <height>30</height>
-             </size>
+            <property name="text">
+             <string>  Save Version</string>
             </property>
-            <property name="font">
-             <font>
-              <pointsize>9</pointsize>
-             </font>
+            <property name="icon">
+             <iconset>
+              <normaloff>../icons/saveVersion.png</normaloff>../icons/saveVersion.png</iconset>
             </property>
-            <property name="currentIndex">
-             <number>0</number>
-            </property>
-            <item>
-             <property name="text">
-              <string>ASSET</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>SHOT</string>
-             </property>
-            </item>
            </widget>
           </item>
-          <item row="2" column="0" colspan="2">
-           <widget class="QStackedWidget" name="creatorStackedWidget">
-            <property name="frameShape">
-             <enum>QFrame::NoFrame</enum>
+          <item>
+           <widget class="QPushButton" name="publishButton">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
             </property>
-            <property name="lineWidth">
-             <number>1</number>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>50</height>
+             </size>
             </property>
-            <property name="currentIndex">
-             <number>0</number>
+            <property name="text">
+             <string>  Publish</string>
             </property>
-            <widget class="QWidget" name="assetPage">
-             <layout class="QVBoxLayout" name="verticalLayout_3">
-              <property name="leftMargin">
-               <number>0</number>
-              </property>
-              <property name="topMargin">
-               <number>0</number>
-              </property>
-              <property name="rightMargin">
-               <number>0</number>
-              </property>
-              <property name="bottomMargin">
-               <number>0</number>
-              </property>
-              <item>
-               <layout class="QGridLayout" name="assetGridLayout" rowstretch="0,0,0,1" columnstretch="0,0" rowminimumheight="0,0,0,0">
-                <property name="horizontalSpacing">
-                 <number>0</number>
-                </property>
-                <property name="verticalSpacing">
-                 <number>10</number>
-                </property>
-                <item row="0" column="1">
-                 <widget class="QLineEdit" name="assetNameLineEdit">
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>30</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>100</width>
-                    <height>30</height>
-                   </size>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="placeholderText">
-                   <string>Enter name...</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="0">
-                 <widget class="QLabel" name="assetTypeLabel">
-                  <property name="maximumSize">
-                   <size>
-                    <width>60</width>
-                    <height>16777215</height>
-                   </size>
-                  </property>
-                  <property name="text">
-                   <string>Asset Type: </string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="0" colspan="2">
-                 <widget class="QLabel" name="createAssetDescriptionLabel">
-                  <property name="font">
-                   <font>
-                    <pointsize>11</pointsize>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>ASSET DESCRIPTION</string>
-                  </property>
-                  <property name="alignment">
-                   <set>Qt::AlignCenter</set>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="0">
-                 <widget class="QLabel" name="createAssetNameLabel">
-                  <property name="maximumSize">
-                   <size>
-                    <width>70</width>
-                    <height>16777215</height>
-                   </size>
-                  </property>
-                  <property name="text">
-                   <string>Asset Name: </string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="1">
-                 <widget class="QComboBox" name="assetTypeComboBox">
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>30</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>100</width>
-                    <height>30</height>
-                   </size>
-                  </property>
-                  <item>
-                   <property name="text">
-                    <string>character</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>FX</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>prop</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>set</string>
-                   </property>
-                  </item>
-                 </widget>
-                </item>
-                <item row="3" column="0" colspan="2">
-                 <widget class="QPlainTextEdit" name="assetDescriptionPlainText">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>190</width>
-                    <height>16777215</height>
-                   </size>
-                  </property>
-                  <property name="backgroundVisible">
-                   <bool>false</bool>
-                  </property>
-                  <property name="placeholderText">
-                   <string>Write a quick description of your asset for other artists to see... (MAX 120 characters)</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-             </layout>
-            </widget>
-            <widget class="QWidget" name="shotPage">
-             <layout class="QVBoxLayout" name="verticalLayout_4">
-              <property name="leftMargin">
-               <number>0</number>
-              </property>
-              <property name="topMargin">
-               <number>0</number>
-              </property>
-              <property name="rightMargin">
-               <number>0</number>
-              </property>
-              <property name="bottomMargin">
-               <number>0</number>
-              </property>
-              <item>
-               <layout class="QGridLayout" name="shotGridLayout" rowstretch="0,0,0,0,1">
-                <property name="horizontalSpacing">
-                 <number>0</number>
-                </property>
-                <property name="verticalSpacing">
-                 <number>10</number>
-                </property>
-                <item row="1" column="0">
-                 <widget class="QLabel" name="shotLabel">
-                  <property name="text">
-                   <string>Shot: </string>
-                  </property>
-                  <property name="alignment">
-                   <set>Qt::AlignCenter</set>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="1">
-                 <widget class="QDoubleSpinBox" name="sequenceSpinBox">
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>25</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>16777215</width>
-                    <height>25</height>
-                   </size>
-                  </property>
-                  <property name="alignment">
-                   <set>Qt::AlignCenter</set>
-                  </property>
-                  <property name="readOnly">
-                   <bool>false</bool>
-                  </property>
-                  <property name="buttonSymbols">
-                   <enum>QAbstractSpinBox::UpDownArrows</enum>
-                  </property>
-                  <property name="accelerated">
-                   <bool>false</bool>
-                  </property>
-                  <property name="correctionMode">
-                   <enum>QAbstractSpinBox::CorrectToNearestValue</enum>
-                  </property>
-                  <property name="decimals">
-                   <number>1</number>
-                  </property>
-                  <property name="minimum">
-                   <double>1.000000000000000</double>
-                  </property>
-                  <property name="maximum">
-                   <double>10000.000000000000000</double>
-                  </property>
-                 </widget>
-                </item>
-                <item row="3" column="0" colspan="2">
-                 <widget class="QLabel" name="shotDescriptionLabel">
-                  <property name="font">
-                   <font>
-                    <pointsize>11</pointsize>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>SHOT DESCRIPTION</string>
-                  </property>
-                  <property name="alignment">
-                   <set>Qt::AlignCenter</set>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="1">
-                 <widget class="QDoubleSpinBox" name="shotSpinBox">
-                  <property name="enabled">
-                   <bool>true</bool>
-                  </property>
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>25</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>16777215</width>
-                    <height>25</height>
-                   </size>
-                  </property>
-                  <property name="alignment">
-                   <set>Qt::AlignCenter</set>
-                  </property>
-                  <property name="readOnly">
-                   <bool>false</bool>
-                  </property>
-                  <property name="buttonSymbols">
-                   <enum>QAbstractSpinBox::UpDownArrows</enum>
-                  </property>
-                  <property name="correctionMode">
-                   <enum>QAbstractSpinBox::CorrectToNearestValue</enum>
-                  </property>
-                  <property name="decimals">
-                   <number>1</number>
-                  </property>
-                  <property name="minimum">
-                   <double>1.000000000000000</double>
-                  </property>
-                  <property name="maximum">
-                   <double>10000.000000000000000</double>
-                  </property>
-                  <property name="value">
-                   <double>1.000000000000000</double>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="0">
-                 <widget class="QLabel" name="sequenceLabel">
-                  <property name="text">
-                   <string>Sequence: </string>
-                  </property>
-                  <property name="alignment">
-                   <set>Qt::AlignCenter</set>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="0" colspan="2">
-                 <widget class="QRadioButton" name="masterLayoutRadioButton">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="text">
-                   <string>Master Layout</string>
-                  </property>
-                  <property name="iconSize">
-                   <size>
-                    <width>16</width>
-                    <height>16</height>
-                   </size>
-                  </property>
-                  <property name="checked">
-                   <bool>false</bool>
-                  </property>
-                  <property name="autoRepeat">
-                   <bool>false</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item row="4" column="0" colspan="2">
-                 <widget class="QPlainTextEdit" name="shotDescriptionPlainText">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>190</width>
-                    <height>16777215</height>
-                   </size>
-                  </property>
-                  <property name="backgroundVisible">
-                   <bool>false</bool>
-                  </property>
-                  <property name="placeholderText">
-                   <string>Write a quick description of your shot for other artists to see... (MAX 120 characters)</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-             </layout>
-            </widget>
+            <property name="icon">
+             <iconset>
+              <normaloff>../icons/publish.png</normaloff>../icons/publish.png</iconset>
+            </property>
            </widget>
           </item>
          </layout>
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="browserTab">
-       <attribute name="title">
-        <string>Browser</string>
-       </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_5">
-        <property name="spacing">
-         <number>15</number>
-        </property>
-        <property name="leftMargin">
-         <number>0</number>
-        </property>
-        <property name="topMargin">
-         <number>15</number>
-        </property>
-        <property name="rightMargin">
-         <number>0</number>
-        </property>
-        <property name="bottomMargin">
-         <number>0</number>
-        </property>
-        <item>
-         <widget class="QPushButton" name="browserButton">
-          <property name="font">
-           <font>
-            <pointsize>12</pointsize>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton {
+      <widget class="QTabWidget" name="rightHandTabs">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>215</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="baseSize">
+        <size>
+         <width>215</width>
+         <height>215</height>
+        </size>
+       </property>
+       <property name="tabPosition">
+        <enum>QTabWidget::North</enum>
+       </property>
+       <property name="currentIndex">
+        <number>1</number>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>16</width>
+         <height>16</height>
+        </size>
+       </property>
+       <property name="documentMode">
+        <bool>false</bool>
+       </property>
+       <property name="tabsClosable">
+        <bool>false</bool>
+       </property>
+       <property name="movable">
+        <bool>true</bool>
+       </property>
+       <property name="tabBarAutoHide">
+        <bool>false</bool>
+       </property>
+       <widget class="QWidget" name="creationTab">
+        <attribute name="title">
+         <string>Creator</string>
+        </attribute>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <layout class="QGridLayout" name="creationLayout" columnstretch="0,0">
+           <property name="leftMargin">
+            <number>14</number>
+           </property>
+           <property name="topMargin">
+            <number>15</number>
+           </property>
+           <property name="rightMargin">
+            <number>12</number>
+           </property>
+           <property name="bottomMargin">
+            <number>10</number>
+           </property>
+           <property name="spacing">
+            <number>15</number>
+           </property>
+           <item row="1" column="0">
+            <widget class="QLabel" name="createLabel">
+             <property name="font">
+              <font>
+               <pointsize>11</pointsize>
+               <italic>false</italic>
+               <underline>false</underline>
+              </font>
+             </property>
+             <property name="text">
+              <string>CREATE: </string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0" colspan="2">
+            <widget class="QLabel" name="creatorTitleLabel">
+             <property name="font">
+              <font>
+               <pointsize>13</pointsize>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>SEWERS CREATOR</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0" colspan="2">
+            <widget class="QPushButton" name="createTemplateButton">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>35</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>35</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>Create</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QComboBox" name="createTypeComboBox">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>100</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>9</pointsize>
+              </font>
+             </property>
+             <property name="currentIndex">
+              <number>0</number>
+             </property>
+             <item>
+              <property name="text">
+               <string>ASSET</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>SHOT</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item row="2" column="0" colspan="2">
+            <widget class="QStackedWidget" name="creatorStackedWidget">
+             <property name="frameShape">
+              <enum>QFrame::NoFrame</enum>
+             </property>
+             <property name="lineWidth">
+              <number>1</number>
+             </property>
+             <property name="currentIndex">
+              <number>0</number>
+             </property>
+             <widget class="QWidget" name="assetPage">
+              <layout class="QVBoxLayout" name="verticalLayout_3">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <layout class="QGridLayout" name="assetGridLayout" rowstretch="0,0,0,1" columnstretch="0,0" rowminimumheight="0,0,0,0">
+                 <property name="horizontalSpacing">
+                  <number>0</number>
+                 </property>
+                 <property name="verticalSpacing">
+                  <number>10</number>
+                 </property>
+                 <item row="0" column="1">
+                  <widget class="QLineEdit" name="assetNameLineEdit">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>100</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="placeholderText">
+                    <string>Enter name...</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="0">
+                  <widget class="QLabel" name="assetTypeLabel">
+                   <property name="maximumSize">
+                    <size>
+                     <width>60</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>Asset Type: </string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="0" colspan="2">
+                  <widget class="QLabel" name="createAssetDescriptionLabel">
+                   <property name="font">
+                    <font>
+                     <pointsize>11</pointsize>
+                     <bold>false</bold>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>ASSET DESCRIPTION</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="createAssetNameLabel">
+                   <property name="maximumSize">
+                    <size>
+                     <width>70</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>Asset Name: </string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="1">
+                  <widget class="QComboBox" name="assetTypeComboBox">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>100</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <item>
+                    <property name="text">
+                     <string>character</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>FX</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>prop</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>set</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                 <item row="3" column="0" colspan="2">
+                  <widget class="QPlainTextEdit" name="assetDescriptionPlainText">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>190</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="backgroundVisible">
+                    <bool>false</bool>
+                   </property>
+                   <property name="placeholderText">
+                    <string>Write a quick description of your asset for other artists to see... (MAX 120 characters)</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="shotPage">
+              <layout class="QVBoxLayout" name="verticalLayout_4">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <layout class="QGridLayout" name="shotGridLayout" rowstretch="0,0,0,0,1">
+                 <property name="horizontalSpacing">
+                  <number>0</number>
+                 </property>
+                 <property name="verticalSpacing">
+                  <number>10</number>
+                 </property>
+                 <item row="1" column="0">
+                  <widget class="QLabel" name="shotLabel">
+                   <property name="text">
+                    <string>Shot: </string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="1">
+                  <widget class="QDoubleSpinBox" name="sequenceSpinBox">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>25</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>25</height>
+                    </size>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="readOnly">
+                    <bool>false</bool>
+                   </property>
+                   <property name="buttonSymbols">
+                    <enum>QAbstractSpinBox::UpDownArrows</enum>
+                   </property>
+                   <property name="accelerated">
+                    <bool>false</bool>
+                   </property>
+                   <property name="correctionMode">
+                    <enum>QAbstractSpinBox::CorrectToNearestValue</enum>
+                   </property>
+                   <property name="decimals">
+                    <number>1</number>
+                   </property>
+                   <property name="minimum">
+                    <double>1.000000000000000</double>
+                   </property>
+                   <property name="maximum">
+                    <double>10000.000000000000000</double>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="0" colspan="2">
+                  <widget class="QLabel" name="shotDescriptionLabel">
+                   <property name="font">
+                    <font>
+                     <pointsize>11</pointsize>
+                     <bold>false</bold>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>SHOT DESCRIPTION</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="1">
+                  <widget class="QDoubleSpinBox" name="shotSpinBox">
+                   <property name="enabled">
+                    <bool>true</bool>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>25</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>25</height>
+                    </size>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="readOnly">
+                    <bool>false</bool>
+                   </property>
+                   <property name="buttonSymbols">
+                    <enum>QAbstractSpinBox::UpDownArrows</enum>
+                   </property>
+                   <property name="correctionMode">
+                    <enum>QAbstractSpinBox::CorrectToNearestValue</enum>
+                   </property>
+                   <property name="decimals">
+                    <number>1</number>
+                   </property>
+                   <property name="minimum">
+                    <double>1.000000000000000</double>
+                   </property>
+                   <property name="maximum">
+                    <double>10000.000000000000000</double>
+                   </property>
+                   <property name="value">
+                    <double>1.000000000000000</double>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="sequenceLabel">
+                   <property name="text">
+                    <string>Sequence: </string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="0" colspan="2">
+                  <widget class="QRadioButton" name="masterLayoutRadioButton">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="text">
+                    <string>Master Layout</string>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>16</width>
+                     <height>16</height>
+                    </size>
+                   </property>
+                   <property name="checked">
+                    <bool>false</bool>
+                   </property>
+                   <property name="autoRepeat">
+                    <bool>false</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="4" column="0" colspan="2">
+                  <widget class="QPlainTextEdit" name="shotDescriptionPlainText">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>190</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="backgroundVisible">
+                    <bool>false</bool>
+                   </property>
+                   <property name="placeholderText">
+                    <string>Write a quick description of your shot for other artists to see... (MAX 120 characters)</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </widget>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="browserTab">
+        <attribute name="title">
+         <string>Browser</string>
+        </attribute>
+        <layout class="QVBoxLayout" name="verticalLayout_5">
+         <property name="spacing">
+          <number>15</number>
+         </property>
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>15</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="browserButton">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
     background-color: transparent;
     border: none;
 }
@@ -1037,494 +1048,507 @@ QPushButton:focus {
     outline: none;
 }
 </string>
-          </property>
-          <property name="text">
-           <string>ASSET BROWSER</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QStackedWidget" name="browserStackedWidget">
-          <property name="currentIndex">
-           <number>0</number>
-          </property>
-          <widget class="QWidget" name="assetsPage">
-           <layout class="QVBoxLayout" name="verticalLayout_6">
-            <property name="spacing">
-             <number>10</number>
-            </property>
-            <property name="leftMargin">
-             <number>15</number>
-            </property>
-            <property name="topMargin">
-             <number>0</number>
-            </property>
-            <property name="rightMargin">
-             <number>15</number>
-            </property>
-            <property name="bottomMargin">
-             <number>15</number>
-            </property>
-            <item>
-             <widget class="QComboBox" name="assetComboBox">
-              <property name="font">
-               <font>
-                <pointsize>11</pointsize>
-               </font>
-              </property>
-              <item>
-               <property name="text">
-                <string>All</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Character</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>FX</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Prop</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Set</string>
-               </property>
-              </item>
-             </widget>
-            </item>
-            <item>
-             <widget class="QComboBox" name="assetCategoryComboBox">
-              <property name="font">
-               <font>
-                <pointsize>11</pointsize>
-               </font>
-              </property>
-              <item>
-               <property name="text">
-                <string>assetLayout</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>cloth</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>dressing</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>groom</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>lookdev</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>modeling</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>rig</string>
-               </property>
-              </item>
-             </widget>
-            </item>
-            <item>
-             <widget class="QListWidget" name="assetListWidget">
-              <property name="maximumSize">
-               <size>
-                <width>200</width>
-                <height>185783</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-           </layout>
+           </property>
+           <property name="text">
+            <string>ASSET BROWSER</string>
+           </property>
           </widget>
-          <widget class="QWidget" name="shotsPage">
-           <layout class="QVBoxLayout" name="verticalLayout_7">
-            <property name="spacing">
-             <number>10</number>
-            </property>
-            <property name="leftMargin">
-             <number>15</number>
-            </property>
-            <property name="topMargin">
-             <number>0</number>
-            </property>
-            <property name="rightMargin">
-             <number>15</number>
-            </property>
-            <property name="bottomMargin">
-             <number>15</number>
-            </property>
-            <item>
-             <widget class="QComboBox" name="shotComboBox">
-              <property name="font">
-               <font>
-                <pointsize>11</pointsize>
-               </font>
-              </property>
-              <item>
-               <property name="text">
-                <string>No Sequence</string>
+         </item>
+         <item>
+          <widget class="QStackedWidget" name="browserStackedWidget">
+           <property name="currentIndex">
+            <number>0</number>
+           </property>
+           <widget class="QWidget" name="assetsPage">
+            <layout class="QVBoxLayout" name="verticalLayout_6">
+             <property name="spacing">
+              <number>10</number>
+             </property>
+             <property name="leftMargin">
+              <number>15</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>15</number>
+             </property>
+             <property name="bottomMargin">
+              <number>15</number>
+             </property>
+             <item>
+              <widget class="QComboBox" name="assetComboBox">
+               <property name="font">
+                <font>
+                 <pointsize>11</pointsize>
+                </font>
                </property>
-              </item>
-             </widget>
-            </item>
-            <item>
-             <widget class="QComboBox" name="shotCategoryComboBox">
-              <property name="font">
-               <font>
-                <pointsize>11</pointsize>
-               </font>
-              </property>
-              <item>
-               <property name="text">
-                <string>anim</string>
+               <item>
+                <property name="text">
+                 <string>All</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Character</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>FX</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Prop</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Set</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="assetCategoryComboBox">
+               <property name="font">
+                <font>
+                 <pointsize>11</pointsize>
+                </font>
                </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>layout</string>
+               <item>
+                <property name="text">
+                 <string>assetLayout</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>cloth</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>dressing</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>groom</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>lookdev</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>modeling</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>rig</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item>
+              <widget class="QListWidget" name="assetListWidget">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+                 <horstretch>1</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
                </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>render</string>
+               <property name="maximumSize">
+                <size>
+                 <width>185783</width>
+                 <height>185783</height>
+                </size>
                </property>
-              </item>
-             </widget>
-            </item>
-            <item>
-             <widget class="QListWidget" name="shotListWidget">
-              <property name="maximumSize">
-               <size>
-                <width>200</width>
-                <height>185783</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-           </layout>
+               <property name="baseSize">
+                <size>
+                 <width>0</width>
+                 <height>0</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QWidget" name="shotsPage">
+            <layout class="QVBoxLayout" name="verticalLayout_7">
+             <property name="spacing">
+              <number>10</number>
+             </property>
+             <property name="leftMargin">
+              <number>15</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>15</number>
+             </property>
+             <property name="bottomMargin">
+              <number>15</number>
+             </property>
+             <item>
+              <widget class="QComboBox" name="shotComboBox">
+               <property name="font">
+                <font>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
+               <item>
+                <property name="text">
+                 <string>No Sequence</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="shotCategoryComboBox">
+               <property name="font">
+                <font>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
+               <item>
+                <property name="text">
+                 <string>anim</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>layout</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>render</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item>
+              <widget class="QListWidget" name="shotListWidget">
+               <property name="maximumSize">
+                <size>
+                 <width>200</width>
+                 <height>185783</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
           </widget>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="viewerTab">
-       <property name="maximumSize">
-        <size>
-         <width>16777215</width>
-         <height>16777215</height>
-        </size>
-       </property>
-       <attribute name="title">
-        <string>Viewer</string>
-       </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,1,0,0">
-        <item>
-         <widget class="QPushButton" name="assetIconButton">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>125</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>125</width>
-            <height>125</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton {
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="viewerTab">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <attribute name="title">
+         <string>Viewer</string>
+        </attribute>
+        <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,1,0,0">
+         <item>
+          <widget class="QPushButton" name="assetIconButton">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>125</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>125</width>
+             <height>125</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
     background-color: transparent;
     border: none;
 }</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="icon">
-           <iconset>
-            <normaloff>../icons/takeSnapshotButton.png</normaloff>../icons/takeSnapshotButton.png</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>125</width>
-            <height>125</height>
-           </size>
-          </property>
-          <property name="autoRepeat">
-           <bool>false</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="assetNameLabel">
-          <property name="font">
-           <font>
-            <pointsize>13</pointsize>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="text">
-           <string>NO NAME</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <layout class="QFormLayout" name="formLayout">
-          <property name="sizeConstraint">
-           <enum>QLayout::SetNoConstraint</enum>
-          </property>
-          <property name="fieldGrowthPolicy">
-           <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
-          </property>
-          <property name="rowWrapPolicy">
-           <enum>QFormLayout::WrapLongRows</enum>
-          </property>
-          <property name="labelAlignment">
-           <set>Qt::AlignBottom|Qt::AlignRight|Qt::AlignTrailing</set>
-          </property>
-          <property name="formAlignment">
-           <set>Qt::AlignHCenter|Qt::AlignTop</set>
-          </property>
-          <property name="verticalSpacing">
-           <number>2</number>
-          </property>
-          <item row="0" column="0">
-           <widget class="QLabel" name="typeLabel">
-            <property name="font">
-             <font>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>Type: </string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="QLabel" name="typeAnswerLabel">
-            <property name="text">
-             <string>...</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="currentVersionLabel">
-            <property name="font">
-             <font>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>Current Version: </string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QLabel" name="currentVersionAnswerLabel">
-            <property name="text">
-             <string>...</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="0">
-           <widget class="QLabel" name="savedByLabel">
-            <property name="font">
-             <font>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>Saved by: </string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="1">
-           <widget class="QLabel" name="savedByAnswerLabel">
-            <property name="text">
-             <string>...</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="0">
-           <widget class="QLabel" name="timeLabel">
-            <property name="font">
-             <font>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>Date &amp; Time: </string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="1">
-           <widget class="QLabel" name="timeAnswerLabel">
-            <property name="text">
-             <string>...</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="0">
-           <widget class="QLabel" name="latestVersionLabel">
-            <property name="font">
-             <font>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>Latest Version: </string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="1">
-           <widget class="QLabel" name="latestVersionAnswerLabel">
-            <property name="text">
-             <string>...</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="0">
-           <widget class="QLabel" name="descriptionLabel">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>190</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>Description: </string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-            </property>
-            <property name="wordWrap">
-             <bool>true</bool>
-            </property>
-            <property name="openExternalLinks">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="1">
-           <widget class="QLabel" name="descriptionAnswerLabel">
-            <property name="text">
-             <string>...</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <widget class="QPushButton" name="addCommentButton">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>35</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>192</width>
-            <height>35</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>  Add Comment</string>
-          </property>
-          <property name="icon">
-           <iconset>
-            <normaloff>../icons/addComment.png</normaloff>../icons/addComment.png</iconset>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="reviewCommentsButton">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>35</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>192</width>
-            <height>35</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>  Review Comments (0)</string>
-          </property>
-          <property name="icon">
-           <iconset>
-            <normaloff>../icons/reviewComments.png</normaloff>../icons/reviewComments.png</iconset>
-          </property>
-         </widget>
-        </item>
-       </layout>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>../icons/takeSnapshotButton.png</normaloff>../icons/takeSnapshotButton.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>125</width>
+             <height>125</height>
+            </size>
+           </property>
+           <property name="autoRepeat">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="assetNameLabel">
+           <property name="font">
+            <font>
+             <pointsize>13</pointsize>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>NO NAME</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QFormLayout" name="formLayout">
+           <property name="sizeConstraint">
+            <enum>QLayout::SetNoConstraint</enum>
+           </property>
+           <property name="fieldGrowthPolicy">
+            <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+           </property>
+           <property name="rowWrapPolicy">
+            <enum>QFormLayout::WrapLongRows</enum>
+           </property>
+           <property name="labelAlignment">
+            <set>Qt::AlignBottom|Qt::AlignRight|Qt::AlignTrailing</set>
+           </property>
+           <property name="formAlignment">
+            <set>Qt::AlignHCenter|Qt::AlignTop</set>
+           </property>
+           <property name="verticalSpacing">
+            <number>2</number>
+           </property>
+           <item row="0" column="0">
+            <widget class="QLabel" name="typeLabel">
+             <property name="font">
+              <font>
+               <pointsize>11</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>Type: </string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLabel" name="typeAnswerLabel">
+             <property name="text">
+              <string>...</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="currentVersionLabel">
+             <property name="font">
+              <font>
+               <pointsize>11</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>Current Version: </string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLabel" name="currentVersionAnswerLabel">
+             <property name="text">
+              <string>...</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="savedByLabel">
+             <property name="font">
+              <font>
+               <pointsize>11</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>Saved by: </string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QLabel" name="savedByAnswerLabel">
+             <property name="text">
+              <string>...</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="timeLabel">
+             <property name="font">
+              <font>
+               <pointsize>11</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>Date &amp; Time: </string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QLabel" name="timeAnswerLabel">
+             <property name="text">
+              <string>...</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0">
+            <widget class="QLabel" name="latestVersionLabel">
+             <property name="font">
+              <font>
+               <pointsize>11</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>Latest Version: </string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="QLabel" name="latestVersionAnswerLabel">
+             <property name="text">
+              <string>...</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="0">
+            <widget class="QLabel" name="descriptionLabel">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>190</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>11</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>Description: </string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+             <property name="openExternalLinks">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="1">
+            <widget class="QLabel" name="descriptionAnswerLabel">
+             <property name="text">
+              <string>...</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QPushButton" name="addCommentButton">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>35</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>192</width>
+             <height>35</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>  Add Comment</string>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>../icons/addComment.png</normaloff>../icons/addComment.png</iconset>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="reviewCommentsButton">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>35</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>192</width>
+             <height>35</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>  Review Comments (0)</string>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>../icons/reviewComments.png</normaloff>../icons/reviewComments.png</iconset>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
       </widget>
      </widget>
     </item>
