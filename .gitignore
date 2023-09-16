@@ -2,3 +2,4 @@ venv/
 trash/
 temp/
 *.pyc
+temp/temp_mel_launcher.mel

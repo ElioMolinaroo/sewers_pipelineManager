@@ -332,7 +332,7 @@ def openFileFromExplorer(ui, explorer_widget):
             # Adds the file to the recent files list
             item_name = item.data()
             recentFilesApp.addToRecentFiles(ui, item_name, full_path)
-        # If it's not a maya file, open it with its default application
+        # If it's not a maya file, open it with its default
         else:
             fileLibs.openFile(str(full_path))
 
@@ -467,6 +467,12 @@ def updateViewerInfo(ui, explorer_widget):
 
     except:
         print('ERROR: could not update the viewer info...')
+
+    # Check if clicked file is maya file, if yes display viewer
+    file_extension = Path(filepath).suffix
+    if file_extension == '.ma' or file_extension == '.mb':
+        ui.rightHandTabs.setCurrentIndex(2)
+
 
 # Execute to launch the Add Comment dialog UI
 def addCommentUI(add_comment_dialog):
