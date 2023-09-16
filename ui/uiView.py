@@ -80,6 +80,14 @@ class SewersUI(QMainWindow):
         self.createProjectButton.clicked.connect(lambda: sewersController.createProjectUI(self, CreateProjectUI))
         self.setProjectButton.clicked.connect(lambda: sewersController.setProjectUI(self, SetProjectUI))
 
+        # Creating tabs shortcuts
+        slot_1_shortcut = QShortcut(QKeySequence('Alt+1'), self)
+        slot_1_shortcut.activated.connect(lambda: self.rightHandTabs.setCurrentIndex(0))
+        slot_2_shortcut = QShortcut(QKeySequence('Alt+2'), self)
+        slot_2_shortcut.activated.connect(lambda: self.rightHandTabs.setCurrentIndex(1))
+        slot_3_shortcut = QShortcut(QKeySequence('Alt+3'), self)
+        slot_3_shortcut.activated.connect(lambda: self.rightHandTabs.setCurrentIndex(2))
+
         # Creator module events
         self.createTemplateButton.clicked.connect(lambda: sewersController.createTemplate(self))
         self.masterLayoutRadioButton.toggled.connect(lambda: creatorLibs.createShotUpdateUI(self))
