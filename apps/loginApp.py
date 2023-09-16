@@ -8,12 +8,15 @@ def userRegister(username: str, password: str):
     # Get the path to the users database
     database_path = loginLibs.pathToDatabase('users.json')
 
+    # Encrypts the password
+    hashed_password = loginLibs.passwordHasher(password)
+
     # Registers the user in the database
-    formatted_entry = loginLibs.formatCredentialsEntry(username, password, BASE_PERMISSIONS_LEVEL)
+    formatted_entry = loginLibs.formatCredentialsEntry(username, hashed_password, BASE_PERMISSIONS_LEVEL)
     loginLibs.writeJsonData(formatted_entry, database_path)
 
     # Register the cookies
-    cookies_entry = loginLibs.formatCredentialsEntry(username, password, BASE_PERMISSIONS_LEVEL)
+    cookies_entry = loginLibs.formatCredentialsEntry(username, hashed_password, BASE_PERMISSIONS_LEVEL)
     loginLibs.registerCookies(cookies_entry)
 
     print(f'User {username} added to the database')
@@ -21,6 +24,9 @@ def userRegister(username: str, password: str):
 
 # Checks for user's information and, if correct, logs the user in
 def userLogin(username: str, password: str):
+    # Hash password to match hashed target password
+    hashed_password = loginLibs.passwordHasher(password)
+
     # Load the JSON users file as a dictionary
     database_path = loginLibs.pathToDatabase('users.json')
     raw_data = loginLibs.loadJsonData(database_path)
@@ -39,10 +45,10 @@ def userLogin(username: str, password: str):
         permissions_at_pos = loginLibs.getDataAtPosition(permissions_levels, username_position)
 
         # Check if the password matches the one given
-        if password_at_pos == password:
+        if password_at_pos == hashed_password:
 
             # Register the cookies
-            cookies_entry = loginLibs.formatCredentialsEntry(username, password, permissions_at_pos)
+            cookies_entry = loginLibs.formatCredentialsEntry(username, hashed_password, permissions_at_pos)
             loginLibs.registerCookies(cookies_entry)
 
             print(f"You're logged in as {username}.")

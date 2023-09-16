@@ -233,6 +233,7 @@ class SewersUI(QMainWindow):
 
         self.thread.start()
 
+
 # Class for the login dialog window
 class LoginUI(QDialog):
     login_signal = pyqtSignal()

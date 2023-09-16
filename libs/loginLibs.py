@@ -1,4 +1,5 @@
 import json
+import hashlib
 from pathlib import Path
 
 # Variable describing the path to the cookies' database on each machine
@@ -110,3 +111,13 @@ def deleteCookies(cookies_path=LOGIN_COOKIES_DATABASE):
     with open(cookies_path, 'r+') as file:
         json.dump([], file)
         file.close()
+
+
+# Hashes a password into a sha256 object and returns a string of it
+def passwordHasher(password: str):
+    # Hashes the password into a sha256 object
+    test_hash = hashlib.sha256()
+    test_hash.update(password.encode())
+    # Output the hashed password as a string
+    hash_password = test_hash.hexdigest()
+    return hash_password
