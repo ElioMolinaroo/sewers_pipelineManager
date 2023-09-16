@@ -22,6 +22,7 @@ from libs import loginLibs
 from libs import projectLibs
 from libs import socketLibs
 from libs import uiLibs
+from libs import fileLibs
 from ui import uiView
 
 
@@ -323,16 +324,20 @@ def openFileFromExplorer(ui, explorer_widget):
     # Get the full path to the double-clicked item
     full_path, item = fileApp.getClickedFilePath(explorer_widget)
 
-    # Check if it is a Maya file
-    if str(full_path).endswith('.ma') is True or str(full_path).endswith('.mb') is True:
-        # Launches the process to open the file
-        openMayaFileProcess(ui, str(full_path))
+    try:
+        # Check if it is a Maya file
+        if str(full_path).endswith('.ma') is True or str(full_path).endswith('.mb') is True:
+            # Launches the process to open the file
+            openMayaFileProcess(ui, str(full_path))
+            # Adds the file to the recent files list
+            item_name = item.data()
+            recentFilesApp.addToRecentFiles(ui, item_name, full_path)
+        # If it's not a maya file, open it with its default application
+        else:
+            fileLibs.openFile(str(full_path))
 
-        # Adds the file to the recent files list
-        item_name = item.data()
-        recentFilesApp.addToRecentFiles(ui, item_name, full_path)
-    else:
-        print('WARNING: Sewers can only open maya files...')
+    except:
+        print("WARNING: Sewers can't open this file type...")
 
 
 # Opens A file in a running instance of maya or creates one, it also creates a connection with SEWERS
