@@ -74,7 +74,6 @@ def initUi(ui):
             ui.logoutButton.setEnabled(True)
         # Update the current username and its permissions
         ui.usernameLabel.setText(return_cookies[1])
-        ui.userRoleLabel.setText(return_cookies[2])
 
     # Set the connections if no user is logged in
     elif 'noLog' in return_cookies:

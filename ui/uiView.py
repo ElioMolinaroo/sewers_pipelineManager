@@ -2,8 +2,9 @@ import sys
 
 import qdarktheme
 from PyQt6 import uic
-from PyQt6.QtCore import pyqtSignal, QEvent, QObject, QThread
+from PyQt6.QtCore import pyqtSignal, QEvent, QObject, QThread, Qt
 from PyQt6.QtWidgets import *
+from PyQt6.QtGui import QShortcut, QKeySequence
 
 from apps import actionButtonsApp
 from apps import contextMenusApp

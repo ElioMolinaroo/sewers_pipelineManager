@@ -108,7 +108,6 @@ def loginRegisterUpdateUI(ui):
     database_path = loginLibs.pathToDatabase('preLoginCookies.json')
     data = loginLibs.loadJsonData(database_path)
     current_permissions = data['permissions_level']
-    ui.userRoleLabel.setText(current_permissions)
 
     # Sets the current project if found in cookies
     current_project_path = projectLibs.getCurrentProject(projectLibs.CURRENT_PROJECT_DATABASE)[1]
