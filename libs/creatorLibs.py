@@ -3,6 +3,7 @@ import shutil
 from pathlib import Path
 
 from libs import loginLibs
+from libs import projectLibs
 
 
 # Formats shot number to the desired length with a trailing zero (except for decimal shot numbers)
@@ -43,7 +44,7 @@ def matchingFolder(directory, target_string):
 # Add the created shot to the project database
 def addShotToDatabase(name: str, path, sequence: str, master: bool):
     # Get current database data
-    current_project_cookies = loginLibs.loadJsonData('databases/projectData/currentProject.json')
+    current_project_cookies = loginLibs.loadJsonData(projectLibs.CURRENT_PROJECT_DATABASE)
     database_file = Path(current_project_cookies['path']) / 'project_data.json'
     data = loginLibs.loadJsonData(str(database_file))
 
@@ -63,7 +64,7 @@ def addShotToDatabase(name: str, path, sequence: str, master: bool):
 # Add the created asset to the project database
 def addAssetToDatabase(name: str, path, category: str):
     # Get current database data
-    current_project_cookies = loginLibs.loadJsonData('databases/projectData/currentProject.json')
+    current_project_cookies = loginLibs.loadJsonData(projectLibs.CURRENT_PROJECT_DATABASE)
     database_file = Path(current_project_cookies['path']) / 'project_data.json'
     data = loginLibs.loadJsonData(str(database_file))
 

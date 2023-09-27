@@ -236,7 +236,7 @@ def createTemplate(ui):
         shot_name = creatorApp.prepShot(ui)
 
         # Check if there is already a shot with this name
-        current_project_cookies = loginLibs.loadJsonData('databases/projectData/currentProject.json')
+        current_project_cookies = loginLibs.loadJsonData(projectLibs.CURRENT_PROJECT_DATABASE)
         raw_path = current_project_cookies['shots_path']
         folder_match = creatorLibs.matchingFolder(raw_path, shot_name)
 
@@ -273,7 +273,7 @@ def browserUpdateUI(ui):
 # Gets the currently selected item and navigates to it in the folder view
 def browserGoToSelection(ui, clicked_widget, shots_or_assets: str):
     # Get current database data
-    current_project_cookies = loginLibs.loadJsonData('databases/projectData/currentProject.json')
+    current_project_cookies = loginLibs.loadJsonData(projectLibs.CURRENT_PROJECT_DATABASE)
     database_file = Path(current_project_cookies['path']) / 'project_data.json'
     raw_data = loginLibs.loadJsonData(str(database_file))
     database = raw_data[shots_or_assets]

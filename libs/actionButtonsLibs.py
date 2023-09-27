@@ -5,6 +5,7 @@ from apps import fileApp
 from apps import socketApp
 from libs import fileLibs
 from libs import loginLibs
+from libs import projectLibs
 
 
 def isCurrentUntitled(ui):
@@ -25,7 +26,7 @@ def isClickedMayaFile(explorer_widget):
 
     if len(filepath) != 0:
         # Get the root path
-        current_project_cookies = loginLibs.loadJsonData('databases/projectData/currentProject.json')
+        current_project_cookies = loginLibs.loadJsonData(projectLibs.CURRENT_PROJECT_DATABASE)
         root_path = current_project_cookies['path']
 
         # Look for a Maya extension

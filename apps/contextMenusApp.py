@@ -11,6 +11,7 @@ from libs import contextMenusLibs
 from libs import creatorLibs
 from libs import fileLibs
 from libs import loginLibs
+from libs import projectLibs
 
 
 # Copes the full path of a right-clicked item to the clipboard
@@ -101,7 +102,7 @@ def renameAsset(ui, index, new_nice_name):
             raw_database[object_type][new_safe_name] = old_asset_data
 
             # Update the project cookies
-            current_project_cookies = loginLibs.loadJsonData('databases/projectData/currentProject.json')
+            current_project_cookies = loginLibs.loadJsonData(projectLibs.CURRENT_PROJECT_DATABASE)
             database_file = Path(current_project_cookies['path']) / 'project_data.json'
             loginLibs.registerCookies(raw_database, str(database_file))
 
@@ -137,7 +138,7 @@ def deleteAsset(ui, index):
     # Recreate database without entry
     raw_database[object_type].pop(asset_name)
     # Update the project cookies
-    current_project_cookies = loginLibs.loadJsonData('databases/projectData/currentProject.json')
+    current_project_cookies = loginLibs.loadJsonData(projectLibs.CURRENT_PROJECT_DATABASE)
     database_file = Path(current_project_cookies['path']) / 'project_data.json'
     loginLibs.registerCookies(raw_database, str(database_file))
 

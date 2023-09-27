@@ -19,7 +19,7 @@ def createAsset(ui):
 
     else:
         # Queries the path to the asset directory corresponding to the chosen category
-        current_project_cookies = loginLibs.loadJsonData('databases/projectData/currentProject.json')
+        current_project_cookies = loginLibs.loadJsonData(projectLibs.CURRENT_PROJECT_DATABASE)
         current_project_path = current_project_cookies['assets_path']
         asset_path = Path(current_project_path) / asset_type
 
@@ -84,7 +84,7 @@ def createShot(ui, nice_shot_name):
     description = ui.shotDescriptionPlainText.toPlainText()
 
     # Queries the path to the asset directory corresponding to the chosen category
-    current_project_cookies = loginLibs.loadJsonData('databases/projectData/currentProject.json')
+    current_project_cookies = loginLibs.loadJsonData(projectLibs.CURRENT_PROJECT_DATABASE)
     raw_path = current_project_cookies['shots_path']
     shots_path = Path(raw_path)
 

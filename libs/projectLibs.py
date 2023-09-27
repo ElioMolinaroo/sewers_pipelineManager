@@ -135,7 +135,7 @@ def createProjectData(project_path):
 # Queries the current project data if it exists, returns an empty string otherwise
 def getProjectData():
     # Get current database data
-    current_project_cookies = loginLibs.loadJsonData('databases/projectData/currentProject.json')
+    current_project_cookies = loginLibs.loadJsonData(CURRENT_PROJECT_DATABASE)
     database_file = Path(current_project_cookies['path']) / 'project_data.json' if len(current_project_cookies) != 0 else ''
 
     if len(str(database_file)) != 0 and database_file.exists() is True:
