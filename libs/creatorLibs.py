@@ -100,14 +100,14 @@ def buildSequenceNiceName(shot_name):
 
 # Creates a Maya file at the specified directory with the specified name
 def createMayaFile(name, path):
-    source_file = Path('databases/maya2022TemplateFile.ma')
+    source_file = Path(os.getenv('USERPROFILE')) / '.sewers' / 'databases' / 'maya2023TemplateFile.ma'
     destination_dir = Path(path)
 
     # Copy the file to the new directory
     shutil.copy(source_file, destination_dir)
 
     # Change the name of the new file
-    old_file = Path(path) / 'maya2022TemplateFile.ma'
+    old_file = Path(path) / 'maya2023TemplateFile.ma'
     new_file = Path(path) / f'{name}.ma'
 
     os.rename(old_file, new_file)

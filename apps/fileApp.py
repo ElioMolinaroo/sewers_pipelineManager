@@ -1,4 +1,5 @@
 from pathlib import Path
+import os
 
 from libs import fileLibs
 from libs import loginLibs
@@ -20,7 +21,7 @@ def openMayaFile(file_path: str):
     launcher_full_path = Path.cwd() / 'temp/temp_mel_launcher.mel'
 
     # get the maya path
-    with open('databases/mayaPath.txt', 'r') as file:
+    with open(Path(Path(os.getenv('USERPROFILE')) / '.sewers' / 'databases/mayaPath.txt'), 'r') as file:
         maya_path = file.read()
         file.close()
 

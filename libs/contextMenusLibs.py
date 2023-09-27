@@ -57,7 +57,7 @@ def getRelativePathToFileOrFolder(path):
 
 # Creates a zbrush file at the specified directory with the specified name
 def createZbrushFile(name, path):
-    source_file = Path('databases/zbrush2023TemplateFile.zpr')
+    source_file = Path(os.getenv('USERPROFILE')) / '.sewers' / 'databases' / 'zbrush2023TemplateFile.zpr'
     destination_dir = Path(path)
 
     # Copy the file to the new directory

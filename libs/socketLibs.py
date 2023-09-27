@@ -39,7 +39,7 @@ def sendMayaCommand(command: str):
 
 def getMayaOutput():
     data = maya_socket.recv(1024)
-    data = data.replace(b'\n\x00', b'').decode('utf-8')
+    data = data.decode('utf-8', errors='replace')
     return data
 
 

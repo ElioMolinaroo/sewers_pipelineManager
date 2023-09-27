@@ -4,7 +4,7 @@ import subprocess
 from pathlib import Path
 
 
-with open('databases/mayaPath.txt', 'r') as file:
+with open(Path(Path(os.getenv('USERPROFILE')) / '.sewers' / 'databases' / 'mayaPath.txt'), 'r') as file:
     data = file.read().removesuffix('maya.exe')
     file.close()
 PATH_TO_MAYAPY = Path(data) / 'mayapy.exe'

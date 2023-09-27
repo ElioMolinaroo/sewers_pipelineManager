@@ -324,20 +324,21 @@ def openFileFromExplorer(ui, explorer_widget):
     # Get the full path to the double-clicked item
     full_path, item = fileApp.getClickedFilePath(explorer_widget)
 
-    try:
+    #try:
         # Check if it is a Maya file
-        if str(full_path).endswith('.ma') is True or str(full_path).endswith('.mb') is True:
-            # Launches the process to open the file
-            openMayaFileProcess(ui, str(full_path))
-            # Adds the file to the recent files list
-            item_name = item.data()
-            recentFilesApp.addToRecentFiles(ui, item_name, full_path)
-        # If it's not a maya file, open it with its default
-        else:
-            fileLibs.openFile(str(full_path))
+    if str(full_path).endswith('.ma') is True or str(full_path).endswith('.mb') is True:
+        # Launches the process to open the file
+        openMayaFileProcess(ui, str(full_path))
+        # Adds the file to the recent files list
+        item_name = item.data()
+        recentFilesApp.addToRecentFiles(ui, item_name, full_path)
+    # If it's not a maya file, open it with its default
+    else:
+        fileLibs.openFile(str(full_path))
 
-    except:
-        print("\nWARNING: Sewers can't open this file type...\n")
+    #except Exception as e:
+        #print(e)
+        #print("\nWARNING: Sewers can't open this file type...\n")
 
 
 # Opens A file in a running instance of maya or creates one, it also creates a connection with SEWERS
