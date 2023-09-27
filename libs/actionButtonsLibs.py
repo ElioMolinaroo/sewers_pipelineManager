@@ -23,17 +23,20 @@ def isClickedMayaFile(explorer_widget):
     # Check if filepath is provided
     filepath, item = fileApp.getClickedFilePath(explorer_widget)
 
-    # Get the root path
-    current_project_cookies = loginLibs.loadJsonData('databases/projectData/currentProject.json')
-    root_path = current_project_cookies['path']
+    if len(filepath) != 0:
+        # Get the root path
+        current_project_cookies = loginLibs.loadJsonData('databases/projectData/currentProject.json')
+        root_path = current_project_cookies['path']
 
-    # Look for a Maya extension
-    is_maya_extension = True if '.ma' in str(filepath) or '.mb' in str(filepath) else False
+        # Look for a Maya extension
+        is_maya_extension = True if '.ma' in str(filepath) or '.mb' in str(filepath) else False
 
-    if Path(filepath) == Path(root_path) or is_maya_extension is False:
-        return None
+        if Path(filepath) == Path(root_path) or is_maya_extension is False:
+            return None
+        else:
+            return filepath
     else:
-        return filepath
+        return None
 
 
 # Does a playblast on the input maya file with the user settings
