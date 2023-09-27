@@ -49,6 +49,7 @@
        <property name="font">
         <font>
          <pointsize>11</pointsize>
+         <weight>75</weight>
          <bold>true</bold>
         </font>
        </property>
@@ -110,6 +111,9 @@
        <property name="focusPolicy">
         <enum>Qt::StrongFocus</enum>
        </property>
+       <property name="echoMode">
+        <enum>QLineEdit::Password</enum>
+       </property>
        <property name="placeholderText">
         <string>Enter a password...</string>
        </property>
@@ -141,6 +145,9 @@
        </property>
        <property name="focusPolicy">
         <enum>Qt::StrongFocus</enum>
+       </property>
+       <property name="echoMode">
+        <enum>QLineEdit::Password</enum>
        </property>
        <property name="placeholderText">
         <string>Confirm your password...</string>
