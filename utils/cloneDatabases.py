@@ -12,7 +12,10 @@ def cloneDatabases():
     shutil.copytree(databases_path, target_path, dirs_exist_ok=True)
 
     # Remove __pycache__ folder
-    shutil.rmtree(target_path / '__pycache__')
-    shutil.rmtree(target_path / 'projectData' / '__pycache__')
+    try:
+        shutil.rmtree(target_path / '__pycache__')
+        shutil.rmtree(target_path / 'projectData' / '__pycache__')
+    except:
+        pass
 
 cloneDatabases()
