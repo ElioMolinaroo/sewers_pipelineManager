@@ -62,7 +62,8 @@ def getPublishInfo(old_path: str):
 # Saves a version
 def saveVersion(ui, new_path, new_name, old_name):
     # Send commands to create the new file
-    socketApp.sendMayaCommandProcess(ui, f'cmds.file(rename="{new_path}")')
+    safe_path = str(Path(new_path).as_posix()).replace('\n', '')
+    socketApp.sendMayaCommandProcess(ui, f'cmds.file(rename="{safe_path}")')
     socketApp.sendMayaCommandProcess(ui, f'cmds.file(save=True, type="mayaAscii")')
 
     print(f'\n{old_name.upper()} versioned up successfully to {new_name.upper()}.\n')
