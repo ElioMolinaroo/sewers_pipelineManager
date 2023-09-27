@@ -269,7 +269,7 @@ def themeToggle(ui, explorer_widget):
         uiLibs.setToLightTheme(ui)
         UI_THEME_STATE = 'light'
 
-    # Update Viewer UI only if project is set
+    '''# Update Viewer UI only if project is set
     current_project_cookies = loginLibs.loadJsonData(projectLibs.CURRENT_PROJECT_DATABASE)
     if len(current_project_cookies) != 0:
-        sewersController.updateViewerInfo(ui, explorer_widget)
+        sewersController.updateViewerInfo(ui, explorer_widget)'''
