@@ -61,7 +61,12 @@ maya.standalone.uninitialize()
 
     # Run the code and get the last line of the output
     bytes_output = subprocess.run([path_to_mayapy, '-c', final_script], stdout=subprocess.PIPE, check=True)
-    str_raw_output = bytes_output.stdout.decode()
-    str_output = str_raw_output.splitlines()[-1]
 
-    return str_output
+    # Try to get an output
+    try:
+        str_raw_output = bytes_output.stdout.decode()
+        str_output = str_raw_output.splitlines()[-1]
+        return str_output
+    
+    except:
+        return None
