@@ -2,3 +2,4 @@ venv/
 temp/
 *.pyc
 temp/temp_mel_launcher.mel
+openDesigner.bat

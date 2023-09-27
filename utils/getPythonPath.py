@@ -21,5 +21,8 @@ def writePathToDisk(python_path: str, file_name):
     text_file.close()
 
 
-path = getPythonPath()
-writePathToDisk(path, 'pythonPath.txt')
+try:
+    path = getPythonPath()
+    writePathToDisk(path, 'pythonPath.txt')
+except:
+    print('ERROR: Could not find a python distribution...')
