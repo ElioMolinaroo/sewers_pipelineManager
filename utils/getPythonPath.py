@@ -15,7 +15,7 @@ def getPythonPath():
 
 
 def writePathToDisk(python_path: str, file_name):
-    filepath = Path.cwd() / 'databases' / file_name
+    filepath = Path(os.getenv('USERPROFILE')) / '.sewers' / 'databases' / file_name
     text_file = open(filepath, 'w')
     text_file.write(python_path)
     text_file.close()

@@ -15,7 +15,7 @@ def getMayaPath():
 
 
 def writePathToDisk(maya_path: str, file_name):
-    filepath = Path.cwd() / 'databases' / file_name
+    filepath = Path(os.getenv('USERPROFILE')) / '.sewers' / 'databases' / file_name
     text_file = open(filepath, 'w')
     text_file.write(maya_path)
     text_file.close()

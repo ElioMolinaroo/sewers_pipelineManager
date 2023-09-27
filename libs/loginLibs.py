@@ -1,9 +1,10 @@
 import json
 import hashlib
 from pathlib import Path
+import os
 
 # Variable describing the path to the cookies' database on each machine
-LOGIN_COOKIES_DATABASE = Path.cwd() / 'databases/preLoginCookies.json'
+LOGIN_COOKIES_DATABASE = Path(os.getenv('USERPROFILE')) / '.sewers' / 'databases' / 'preLoginCookies.json'
 
 """Create the functions of the login module"""
 
@@ -34,10 +35,7 @@ def writeJsonData(dict_entry, database_path):
 
 # Returns the path to the given database
 def pathToDatabase(database_name: str):
-    file_parent = Path(__file__).resolve().parents[1]
-    current = file_parent.__str__()
-    path = current + r'\databases\\' + database_name
-    path = Path(path)
+    path = Path(os.getenv('USERPROFILE')) / '.sewers' / 'databases' / database_name
     return path
 
 

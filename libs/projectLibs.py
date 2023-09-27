@@ -1,14 +1,15 @@
 import json
 import shutil
 from pathlib import Path
+import os
 
 from PyQt6.QtWidgets import QFileDialog
 
 from libs import loginLibs
 from libs import uiLibs
 
-CURRENT_PROJECT_DATABASE = Path.cwd() / 'databases' / 'projectData' / 'currentProject.json'
-PROJECTS_DATABASE = Path.cwd() / 'databases' / 'projectData' / 'projects.json'
+CURRENT_PROJECT_DATABASE = Path(os.getenv('USERPROFILE')) / '.sewers' / 'databases' / 'projectData' / 'currentProject.json'
+PROJECTS_DATABASE = Path(os.getenv('USERPROFILE')) / '.sewers' / 'databases' / 'projectData' / 'projects.json'
 
 
 # Changes the project name
@@ -35,7 +36,7 @@ def createFolderStructure(dictionary, root_dir):
 
 # Copies the maya workspace file from the databases folder and pastes it at the given path
 def createMayaWorkspace(path):
-    workspace_path = Path.cwd() / 'databases' / 'projectData' / 'workspace.mel'
+    workspace_path = Path(os.getenv('USERPROFILE')) / '.sewers' / 'databases' / 'projectData' / 'workspace.mel'
     destination_path = Path(path)
 
     shutil.copy2(workspace_path, destination_path)

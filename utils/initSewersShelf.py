@@ -65,7 +65,8 @@ def updateIconsPath(search_string, path_to_icons):
 
 
 def getMayaShelvesPath():
-    with open('databases/mayaPath.txt', 'r') as file:
+    mayaPath_path = Path(os.getenv('USERPROFILE')) / '.sewers' / 'databases/mayaPath.txt'
+    with open(mayaPath_path, 'r') as file:
         maya_path = file.read()
         file.close()
 

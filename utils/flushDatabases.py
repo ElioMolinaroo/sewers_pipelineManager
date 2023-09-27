@@ -1,5 +1,6 @@
 from pathlib import Path
 import json
+import os
 
 
 def flushTextFile(file_path):
@@ -15,7 +16,7 @@ def flushJsonFile(file_path):
 
 
 def flushDatabases():
-    databases_path = Path.cwd() / 'databases'
+    databases_path = Path(os.getenv('USERPROFILE')) / '.sewers' / 'databases'
 
     # Get texts path into a list
     houdini_path_file = databases_path / 'houdiniPythonLibsPath.txt'
