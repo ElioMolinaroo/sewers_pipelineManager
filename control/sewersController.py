@@ -428,7 +428,7 @@ def savePublishProcess(ui):
 
 
 # Opens a pop-up with playblast options, treats them and return a dictionary
-def playblastPreProcess(playblast_dialog, explorer_widget):
+def playblastPreProcess(ui, playblast_dialog, explorer_widget):
     # Check if filepath is a Maya file, if not error message
     maya_file = actionButtonsLibs.isClickedMayaFile(explorer_widget)
 
@@ -436,7 +436,7 @@ def playblastPreProcess(playblast_dialog, explorer_widget):
         print('ERROR: You need to select a maya file to playblast (.ma or .mb)...')
     else:
         # Get list of all cameras
-        cameras = actionButtonsApp.getCamerasList(maya_file)
+        cameras = actionButtonsApp.getCamerasList(ui, maya_file)
         # Pop-up with user options
         playblast_ui = playblast_dialog(cameras, maya_file)
         playblast_ui.exec()

@@ -129,7 +129,7 @@ class SewersUI(QMainWindow):
         # Action Buttons module events
         self.saveVersionButton.clicked.connect(lambda: actionButtonsApp.saveVersionConfirmationUI(self, SaveVersionConfirmationUI))
         self.publishButton.clicked.connect(lambda: actionButtonsApp.publishConfirmationUI(self, PublishConfirmationUI))
-        self.playblastButton.clicked.connect(lambda: sewersController.playblastPreProcess(PlayblastUI, self.fileManagerColumnView))
+        self.playblastButton.clicked.connect(lambda: sewersController.playblastPreProcess(self, PlayblastUI, self.fileManagerColumnView))
 
         # Recent Files module events
         self.recentFilesListWidget.itemDoubleClicked.connect(lambda: recentFilesApp.goToSelectedFile(self))

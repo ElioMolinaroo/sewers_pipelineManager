@@ -4,9 +4,11 @@ import shutil
 from pathlib import Path
 
 from apps import socketApp
+from libs import socketLibs
 from libs import actionButtonsLibs
 from libs import fileLibs
 from libs import projectLibs
+from ui import uiView
 
 
 # Updates the info for the new version file
@@ -93,7 +95,7 @@ def saveVersionConfirmationUI(ui, save_version_confirmation_dialog):
 
 
 # Opens Maya in standalone to get a list of cameras
-def getCamerasList(maya_file_path: str):
+def getCamerasList(ui, maya_file_path: str):
     """The standalone commands and importing cmds are already embedded, don't do them twice"""
     maya_safe_path = Path(maya_file_path).as_posix()
 
@@ -103,8 +105,15 @@ available_cameras = cmds.listCameras()
 print(available_cameras)
     '''
 
+    # Connect to Maya
+    socketLibs.connectToMaya(socketLibs.PORT)
+
     # Get the raw string output and convert it back to a list of cameras
-    raw_output = fileLibs.runCodeMayaStandalone(script)
+    if socketLibs.isConnectedToMaya(ui) is True and socketApp.sendMayaCommandProcess(ui, 'cmds.file(q=1, sn=1)').split('/')[-1] == uiView.last_selected_index.data():
+        raw_output = socketApp.sendMayaCommandProcess(ui, 'cmds.listCameras()')
+    else:
+        raw_output = fileLibs.runCodeMayaStandalone(script)
+
     converted_output = eval(raw_output)
 
     return converted_output
