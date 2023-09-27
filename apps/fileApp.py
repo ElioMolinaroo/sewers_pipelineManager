@@ -26,8 +26,11 @@ def openMayaFile(file_path: str):
         file.close()
 
     # Open the mel launcher which opens the file
-    maya_path = Path(maya_path)
-    fileLibs.openFileWithApp(launcher_full_path, maya_path)
+    if len(maya_path) != 0:
+        maya_path = Path(maya_path)
+        fileLibs.openFileWithApp(launcher_full_path, maya_path)
+    else:
+        print("\nERROR: Couldn't find maya path, try to run getAppsData...\n")
 
 
 # Get the path to the clicked item in the file explorer
