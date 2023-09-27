@@ -37,5 +37,5 @@ def safeMayaConnect(ui, port):
     if socketLibs.isConnectedToMaya(ui) is True:
         return True
     else:
-        print('TRYING TO CONNECT...')
+        print('\nTRYING TO CONNECT...\n')
         socketLibs.connectToMaya(port)

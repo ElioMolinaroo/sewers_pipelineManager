@@ -79,7 +79,7 @@ def isUserInAsset(explorer_widget):
     if user_path is None:
         asset_path = None
         asset_name = None
-        print('ERROR: You need to select an object in the explorer, failed to perform action...')
+        print('\nERROR: You need to select an object in the explorer, failed to perform action...\n')
     else:
         user_path = str(Path(user_path))
 
@@ -93,6 +93,6 @@ def isUserInAsset(explorer_widget):
         else:
             asset_path = None
             asset_name = None
-            print('ERROR: You are not located within an asset or shot, failed to perform action...')
+            print('\nERROR: You are not located within an asset or shot, failed to perform action...\n')
 
     return [asset_path, asset_name]

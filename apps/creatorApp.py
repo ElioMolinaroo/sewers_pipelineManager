@@ -15,7 +15,7 @@ def createAsset(ui):
     description = ui.assetDescriptionPlainText.toPlainText()
 
     if len(nice_asset_name) == 0:
-        print('ERROR: No name was provided for the asset...')
+        print('\nERROR: No name was provided for the asset...\n')
 
     else:
         # Queries the path to the asset directory corresponding to the chosen category
@@ -53,10 +53,10 @@ def createAsset(ui):
             uiApp.browserUpdateShots(ui)
             uiApp.browserUpdateAssets(ui)
 
-            print(f'The {nice_asset_name.upper()} asset was created successfully.')
+            print(f'\nThe {nice_asset_name.upper()} asset was created successfully.\n')
 
         else:
-            print('ERROR: This project structure does not support asset creation...')
+            print('\nERROR: This project structure does not support asset creation...\n')
 
 
 # Logic for preparing shot names
@@ -123,7 +123,7 @@ def createShot(ui, nice_shot_name):
         uiApp.browserUpdateShots(ui)
         uiApp.browserUpdateAssets(ui)
 
-        print(f'{nice_shot_name} was created successfully.')
+        print(f'\n{nice_shot_name} was created successfully.\n')
 
     else:
-        print('ERROR: This project structure does not support shot creation...')
+        print('\nERROR: This project structure does not support shot creation...\n')

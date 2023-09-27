@@ -19,7 +19,7 @@ def connectToMaya(port):
         return True
 
     except:
-        #print("ERROR: The connection with Maya couldn't be made...")
+        #print("\nERROR: The connection with Maya couldn't be made...\n")
         return False
 
 

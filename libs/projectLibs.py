@@ -99,9 +99,9 @@ def setCurrentProject(ui, current_project_database=CURRENT_PROJECT_DATABASE):
         uiLibs.enableButtons(ui)
         uiLibs.projectTypeChangeUI(ui)
 
-        print(f'Project {str.upper(project_cookies[0])} has been set successfully.')
+        print(f'\nProject {str.upper(project_cookies[0])} has been set successfully.\n')
     else:
-        print('No project cookies were found...')
+        print('\nNo project cookies were found...\n')
 
 
 # Filters item in a given list according to the letters being typed

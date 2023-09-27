@@ -493,7 +493,7 @@ def startUI():
 
     # Initialise the app
     app = QApplication([])
-    print('Sewers loaded successfully.')
+    print('\nSewers loaded successfully.\n')
     sewers_window = SewersUI()
     sewers_window.show()
     sys.exit(app.exec())

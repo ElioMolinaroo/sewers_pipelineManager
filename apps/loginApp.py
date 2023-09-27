@@ -19,7 +19,7 @@ def userRegister(username: str, password: str):
     cookies_entry = loginLibs.formatCredentialsEntry(username, hashed_password, BASE_PERMISSIONS_LEVEL)
     loginLibs.registerCookies(cookies_entry)
 
-    print(f'User {username} added to the database')
+    print(f'\nUser {username} added to the database\n')
 
 
 # Checks for user's information and, if correct, logs the user in
@@ -51,15 +51,15 @@ def userLogin(username: str, password: str):
             cookies_entry = loginLibs.formatCredentialsEntry(username, hashed_password, permissions_at_pos)
             loginLibs.registerCookies(cookies_entry)
 
-            print(f"You're logged in as {username}.")
+            print(f"\nYou're logged in as {username}.\n")
             return ['success', permissions_at_pos]
 
         else:
-            print("ERROR: The password provided doesn't match the username...")
+            print("\nERROR: The password provided doesn't match the username...\n")
             return ['failure', permissions_at_pos]
 
     else:
-        print('ERROR: This username is not in the database...')
+        print('\nERROR: This username is not in the database...\n')
         return 'failure'
 
 
@@ -69,4 +69,4 @@ def userLogout(ui):
     loginLibs.deleteCookies()
     # Change the username back to the default ____
     ui.usernameLabel.setText('_____')
-    print("You're logged out.")
+    print("\nYou're logged out.\n")

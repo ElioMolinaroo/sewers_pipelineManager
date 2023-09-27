@@ -69,7 +69,7 @@ def createZbrushFile(name, path):
 
     os.rename(old_file, new_file)
 
-    print(f'Successfully created file {name.upper()}.zpr.')
+    print(f'\nSuccessfully created file {name.upper()}.zpr.\n')
 
 
 # Check if the file provided is currently open in Maya

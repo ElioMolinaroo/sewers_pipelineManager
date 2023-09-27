@@ -15,7 +15,7 @@ def getLastSaveUser(filepath: str):
                     raw_info = str(line,)
                     break
         except Exception:
-            print('WARNING: Could not get last save user because of file format...')
+            print('\nWARNING: Could not get last save user because of file format...\n')
         file.close()
 
     file.close()

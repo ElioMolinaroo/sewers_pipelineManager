@@ -106,13 +106,13 @@ def registerVerification(ui):
     input_confirm_password = uiLibs.returnLineEdit(ui.confirmPasswordLineEdit)
     # Look for errors
     if uiApp.usernameInDatabase(input_username) is True:
-        print('ERROR: This username already exists...')
+        print('\nERROR: This username already exists...\n')
     elif len(input_username) < 2:
-        print('ERROR: Your username must be at least 2 characters long...')
+        print('\nERROR: Your username must be at least 2 characters long...\n')
     elif len(input_password) < 4:
-        print('ERROR: Your password must be at least 4 characters long...')
+        print('\nERROR: Your password must be at least 4 characters long...\n')
     elif input_password != input_confirm_password:
-        print('ERROR: The confirmation is different than the password...')
+        print('\nERROR: The confirmation is different than the password...\n')
     else:
         loginApp.userRegister(input_username, input_password)
         ui.register_signal.emit()
@@ -142,7 +142,7 @@ def loadProject(ui):
         uiLibs.enableButtons(ui)
         uiLibs.projectTypeChangeUI(ui)
     else:
-        print("WARNING: Couldn't set this project, path must be invalid...")
+        print("\nWARNING: Couldn't set this project, path must be invalid...\n")
 
 
 # Execute to launch the Create Project dialog UI
@@ -177,9 +177,9 @@ def createProjectProcess(ui):
             projectApp.createProject(project_name, project_path, project_template)
             ui.create_project_signal.emit()
         else:
-            print("ERROR: The project you're trying to create already exists in this directory, try another name or another location...")
+            print("\nERROR: The project you're trying to create already exists in this directory, try another name or another location...\n")
     else:
-        print('ERROR: Missing critical project information to create it...')
+        print('\nERROR: Missing critical project information to create it...\n')
 
 
 # Execute to launch the Create Project dialog UI
@@ -213,7 +213,7 @@ def setProject(ui):
             ui.set_project_signal.emit()
 
     else:
-        print('No project were selected...')
+        print('\nNo project were selected...\n')
 
 
 # Logic of the asset or shot button
@@ -241,7 +241,7 @@ def createTemplate(ui):
         folder_match = creatorLibs.matchingFolder(raw_path, shot_name)
 
         if folder_match is True:
-            print(f'ERROR: Shot {shot_name} has already been created...')
+            print(f'\nERROR: Shot {shot_name} has already been created...\n')
         else:
             creatorApp.createShot(ui, shot_name)
             # Update the browser UI
@@ -316,7 +316,7 @@ def initMayaFile(raw_name, file_path, step):
     # Create the Maya file
     creatorLibs.createMayaFile(formatted_name, file_path)
 
-    print(f'{formatted_name.upper()} was created successfully.')
+    print(f'\n{formatted_name.upper()} was created successfully.\n')
 
 
 # Process to open a file when an item from the file explorer gets double-clicked
@@ -337,7 +337,7 @@ def openFileFromExplorer(ui, explorer_widget):
             fileLibs.openFile(str(full_path))
 
     except:
-        print("WARNING: Sewers can't open this file type...")
+        print("\nWARNING: Sewers can't open this file type...\n")
 
 
 # Opens A file in a running instance of maya or creates one, it also creates a connection with SEWERS
@@ -345,7 +345,7 @@ def openMayaFileProcess(ui, file_path: str):
     file_path = Path(file_path)
 
     if file_path.exists() is False:
-        print("ERROR: This file couldn't be open because of an issue with the path...")
+        print("\nERROR: This file couldn't be open because of an issue with the path...\n")
 
     else:
         cmds_open_command = f'import maya.cmds as cmds; cmds.file(force=1, save=1); cmds.file(r"{file_path}", force=1, open=1); cmds.commandPort(name=":5050", sourceType="python");'
@@ -367,7 +367,7 @@ def openMayaFileProcess(ui, file_path: str):
                 # Open the requested file
                 socketApp.sendMayaCommandProcess(ui, cmds_open_command)
             else:
-                print('ERROR: Maya is open but not connected, connect and try again...')
+                print('\nERROR: Maya is open but not connected, connect and try again...\n')
 
         else:
             fileApp.openMayaFile(str(file_path))
@@ -386,7 +386,7 @@ def saveVersionProcess(ui):
         # Get the new name and path to save the file
         test_save_version_info = actionButtonsApp.getNewVersionInfo(name, path)
         if len(test_save_version_info) == 0:
-            print("ERROR: the file couldn't be versioned up, probably due to an incorrect naming...")
+            print("\nERROR: the file couldn't be versioned up, probably due to an incorrect naming...\n")
         else:
             new_name, new_path = test_save_version_info
             # Saves a version of the file
@@ -397,7 +397,7 @@ def saveVersionProcess(ui):
             socketApp.sendMayaCommandProcess(ui, f'cmds.fileInfo("savedBy", "{current_username}")')
 
     else:
-        print('ERROR: Maya is not open or not connected...')
+        print('\nERROR: Maya is not open or not connected...\n')
 
 
 # Publishes the file currently open in Maya
@@ -414,7 +414,7 @@ def savePublishProcess(ui):
         # Check if there is already a publish file
         test_publish_info = actionButtonsApp.getPublishInfo(path)
         if len(test_publish_info) == 0:
-            print("ERROR: the file couldn't be published as there is no publish folder in the project...")
+            print("\nERROR: the file couldn't be published as there is no publish folder in the project...\n")
         else:
             file_path, publish_exists = test_publish_info
             # Publish the file
@@ -424,7 +424,7 @@ def savePublishProcess(ui):
             current_username = loginLibs.getCurrentUsername()
             socketApp.sendMayaCommandProcess(ui, f'cmds.fileInfo("savedBy", "{current_username}")')
     else:
-        print('ERROR: Maya is not open or not connected...')
+        print('\nERROR: Maya is not open or not connected...\n')
 
 
 # Opens a pop-up with playblast options, treats them and return a dictionary
@@ -433,7 +433,7 @@ def playblastPreProcess(ui, playblast_dialog, explorer_widget):
     maya_file = actionButtonsLibs.isClickedMayaFile(explorer_widget)
 
     if maya_file is None:
-        print('ERROR: You need to select a maya file to playblast (.ma or .mb)...')
+        print('\nERROR: You need to select a maya file to playblast (.ma or .mb)...\n')
     else:
         # Get list of all cameras
         cameras = actionButtonsApp.getCamerasList(ui, maya_file)
@@ -466,7 +466,7 @@ def updateViewerInfo(ui, explorer_widget):
                 ui.assetIconButton.setIcon(QIcon(asset_info['thumbnail_path']))
 
     except:
-        print('ERROR: could not update the viewer info...')
+        print('\nERROR: could not update the viewer info...\n')
 
     # Check if clicked file is maya file, if yes display viewer
     file_extension = Path(filepath).suffix
@@ -491,7 +491,7 @@ def addCommentProcess(ui, explorer_widget, sewers_ui):
 
     # Check if the comment is smaller than 1, if yes throws an error
     if len(comment) < 1:
-        print('ERROR: Comments need to be at least 1 character...')
+        print('\nERROR: Comments need to be at least 1 character...\n')
     elif asset_path is None:
         pass
     else:
@@ -513,7 +513,7 @@ def addCommentProcess(ui, explorer_widget, sewers_ui):
         # Update the View Comments button
         uiApp.updateCommentButtonCount(sewers_ui, explorer_widget)
 
-        print(f'Comment for {asset_name.upper()} was successfully posted.')
+        print(f'\nComment for {asset_name.upper()} was successfully posted.\n')
 
 
 # Execute to launch the Review Comments dialog UI
@@ -529,7 +529,7 @@ def reviewCommentsProcess(ui, sewers_ui):
     asset_path, asset_name = assetViewerApp.isUserInAsset(sewers_ui.fileManagerColumnView)
 
     if asset_path is None:
-        print('ERROR: You are not located within an asset or a shot, failed to load comments...')
+        print('\nERROR: You are not located within an asset or a shot, failed to load comments...\n')
     else:
         # Get the path to the comments database
         comments_database_path = asset_path / '_do_not_touch_' / 'comments_database.json'
@@ -609,13 +609,13 @@ def sewersReferenceImportMaya(ui, index, operation_type):
         file_name = index.data()
         clean_file_name = file_name.removesuffix(Path(file_name).suffix)
     except:
-        print('WARNING: This command needs a selected file to process...')
+        print('\nWARNING: This command needs a selected file to process...\n')
         return
     if file_name is None:
-        print('WARNING: This command needs a selected file to process...')
+        print('\nWARNING: This command needs a selected file to process...\n')
         return
     if Path(file_name).suffix != '.ma' and Path(file_name).suffix != '.mb':
-        print('WARNING: This command can only be performed on Maya files...')
+        print('\nWARNING: This command can only be performed on Maya files...\n')
         return
 
     # Links the corresponding function depending on the operation type
@@ -625,4 +625,4 @@ def sewersReferenceImportMaya(ui, index, operation_type):
         case 'reference':
             contextMenusApp.referenceMayaFile(ui, index, clean_file_name)
         case _:
-            print('ERROR: Unsupported operation type...')
+            print('\nERROR: Unsupported operation type...\n')

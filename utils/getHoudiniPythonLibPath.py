@@ -29,4 +29,4 @@ try:
     path = getHouPath()
     writePathToDisk(path, 'houdiniPythonLibsPath.txt')
 except:
-    print('Houdini was not found, skipped path fetching...')
+    print('\nHoudini was not found, skipped path fetching...\n')

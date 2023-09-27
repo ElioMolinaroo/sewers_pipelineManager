@@ -63,7 +63,7 @@ def sewersInit():
 
     # if no cookies were found
     if test_cookies == 0:
-        print("You're not logged in, please login to use Sewers...")
+        print("\nYou're not logged in, please login to use Sewers...\n")
         return 'noLog'
 
     # If cookies were found
@@ -72,13 +72,13 @@ def sewersInit():
         database_path = loginLibs.pathToDatabase('preLoginCookies.json')
         data = loginLibs.loadJsonData(database_path)
         user_permissions = data['permissions_level']
-        print(f'Logged in as {current_username}')
+        print(f'\nLogged in as {current_username}\n')
 
         return ['loggedIn', current_username, user_permissions]
 
     # If there is an error with the cookies database
     else:
-        print("ERROR: Unexpected issue in the cookies' database...")
+        print("\nERROR: Unexpected issue in the cookies' database...\n")
 
         return 'Error'
 

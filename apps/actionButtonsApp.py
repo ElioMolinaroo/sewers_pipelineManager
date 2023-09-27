@@ -65,7 +65,7 @@ def saveVersion(ui, new_path, new_name, old_name):
     socketApp.sendMayaCommandProcess(ui, f'cmds.file(rename="{new_path}")')
     socketApp.sendMayaCommandProcess(ui, f'cmds.file(save=True, type="mayaAscii")')
 
-    print(f'{old_name.upper()} versioned up successfully to {new_name.upper()}.')
+    print(f'\n{old_name.upper()} versioned up successfully to {new_name.upper()}.\n')
 
 
 # Saves a publish
@@ -77,7 +77,7 @@ def savePublish(publish_exists, new_name, new_path, old_path):
     elif publish_exists is False:
         shutil.copy2(old_path, new_path)
 
-    print(f'{new_name.upper()} was published successfully.')
+    print(f'\n{new_name.upper()} was published successfully.\n')
 
 
 # Execute to launch the Publish dialog UI
@@ -171,9 +171,9 @@ def tryPlayblast(ui, maya_file: str):
     try:
         state = actionButtonsLibs.playblast(str(Path(maya_file).as_posix()), user_options["camera"], user_options["format"], image_format=user_options["image_format"], playblast_path=user_options["playblast_path"], filename=user_options["filename"])
         if state == 1:
-            print(f'ERROR: Something went wrong, check the provided path...')
+            print(f'\nERROR: Something went wrong, check the provided path...\n')
     except:
-        print(f'ERROR: Something went wrong with the playblast...')
+        print(f'\nERROR: Something went wrong with the playblast...\n')
 
 
 # Opens a dialog to choose a folder

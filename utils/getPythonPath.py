@@ -25,4 +25,4 @@ try:
     path = getPythonPath()
     writePathToDisk(path, 'pythonPath.txt')
 except:
-    print('ERROR: Could not find a python distribution...')
+    print('\nERROR: Could not find a python distribution...\n')
