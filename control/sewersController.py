@@ -348,7 +348,7 @@ def openMayaFileProcess(ui, file_path: str):
         print("\nERROR: This file couldn't be open because of an issue with the path...\n")
 
     else:
-        cmds_open_command = f'import maya.cmds as cmds; cmds.file(force=1, save=1); cmds.file(r"{file_path}", force=1, open=1); cmds.commandPort(name=":5050", sourceType="python");'
+        cmds_open_command = f'import maya.cmds as cmds; cmds.file(force=1, save=1); cmds.file(r"{file_path}", force=1, open=1); cmds.commandPort(name=":{socketLibs.PORT}", sourceType="python");'
 
         if socketLibs.isProgramOpen('maya.exe') is True:
             # Check if Maya is open and connected

@@ -29,7 +29,6 @@ global proc shelf_SEWERS () {
         -overlayLabelColor 0.8 0.8 0.8 
         -overlayLabelBackColor 0 0 0 0.5 
         -image "C:/DEV/sewersPipeline/sewers/icons/sewersConnectAlt.png"
-        -image "C:/DEV/sewersPipeline/sewers/icons/sewersConnectAlt.png"
         -style "iconOnly" 
         -marginWidth 1
         -marginHeight 1
@@ -63,7 +62,6 @@ global proc shelf_SEWERS () {
         -overlayLabelColor 0.8 0.8 0.8 
         -overlayLabelBackColor 0 0 0 0.5 
         -image "C:/DEV/sewersPipeline/sewers/icons/saveVersionAlt.png"
-        -image "C:/DEV/sewersPipeline/sewers/icons/saveVersionAlt.png"
         -style "iconOnly" 
         -marginWidth 1
         -marginHeight 1
@@ -96,7 +94,6 @@ global proc shelf_SEWERS () {
         -imageOverlayLabel "publish" 
         -overlayLabelColor 0.8 0.8 0.8 
         -overlayLabelBackColor 0 0 0 0.5 
-        -image "C:/DEV/sewersPipeline/sewers/icons/publishAlt.png"
         -image "C:/DEV/sewersPipeline/sewers/icons/publishAlt.png"
         -style "iconOnly" 
         -marginWidth 1
