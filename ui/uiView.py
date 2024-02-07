@@ -44,6 +44,8 @@ class SewersUI(QMainWindow):
         qdarktheme.setup_theme('light', custom_colors={"primary": "#191919",
                                                        "foreground": "#191919",
                                                        "background": "f2f2f2"})
+        
+        uiApp.themeToggle(self, self.fileManagerColumnView)
 
         # Create a variable with all the user-driven inputs
         self.userUiInputs = [self.loginButton, self.logoutButton, self.recentFilesListWidget,
