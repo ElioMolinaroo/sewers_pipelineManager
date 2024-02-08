@@ -14,18 +14,18 @@ def comboBoxSelection(combo_box):
     return user_selection
 
 
-# Disables all the user interface except for the login button
+'''# Disables all the user interface except for the login button
 def disableButtons(ui):
     for i in ui.userUiInputs:
         i.setEnabled(False)
-    ui.loginButton.setEnabled(True)
+    ui.loginButton.setEnabled(True)'''
 
 
 # Enables all the user interface except for the login button
 def enableButtons(ui):
     for i in ui.userUiInputs:
         i.setEnabled(True)
-    ui.loginButton.setEnabled(False)
+    #ui.loginButton.setEnabled(False)
 
 
 # Shows a dialog window
@@ -65,13 +65,13 @@ def setToDarkTheme(ui):
     ui.addCommentButton.setIcon(QIcon(str(Path.cwd() / 'icons' / 'addCommentAlt.png')))
     ui.createProjectButton.setIcon(QIcon(str(Path.cwd() / 'icons' / 'createProjectAlt.png')))
     ui.loadProjectButton.setIcon(QIcon(str(Path.cwd() / 'icons' / 'loadProjectAlt.png')))
-    ui.logoutButton.setIcon(QIcon(str(Path.cwd() / 'icons' / 'logOutAlt.png')))
+    #ui.logoutButton.setIcon(QIcon(str(Path.cwd() / 'icons' / 'logOutAlt.png')))
     ui.playblastButton.setIcon(QIcon(str(Path.cwd() / 'icons' / 'playblastAlt.png')))
     ui.publishButton.setIcon(QIcon(str(Path.cwd() / 'icons' / 'publishAlt.png')))
     ui.reviewCommentsButton.setIcon(QIcon(str(Path.cwd() / 'icons' / 'reviewCommentsAlt.png')))
     ui.saveVersionButton.setIcon(QIcon(str(Path.cwd() / 'icons' / 'saveVersionAlt.png')))
     ui.setProjectButton.setIcon(QIcon(str(Path.cwd() / 'icons' / 'setProjectAlt.png')))
-    ui.assetIconButton.setIcon(QIcon(str(Path.cwd() / 'icons' / 'takeSnapshotButtonAlt.png')))
+    #ui.assetIconButton.setIcon(QIcon(str(Path.cwd() / 'icons' / 'takeSnapshotButtonAlt.png')))
     ui.userIcon.setIcon(QIcon(str(Path.cwd() / 'icons' / 'userLogoAlt.png')))
 
 
@@ -85,13 +85,13 @@ def setToLightTheme(ui):
     ui.addCommentButton.setIcon(QIcon(str(Path.cwd() / 'icons' / 'addComment.png')))
     ui.createProjectButton.setIcon(QIcon(str(Path.cwd() / 'icons' / 'createProject.png')))
     ui.loadProjectButton.setIcon(QIcon(str(Path.cwd() / 'icons' / 'loadProject.png')))
-    ui.logoutButton.setIcon(QIcon(str(Path.cwd() / 'icons' / 'logOut.png')))
+    #ui.logoutButton.setIcon(QIcon(str(Path.cwd() / 'icons' / 'logOut.png')))
     ui.playblastButton.setIcon(QIcon(str(Path.cwd() / 'icons' / 'playblast.png')))
     ui.publishButton.setIcon(QIcon(str(Path.cwd() / 'icons' / 'publish.png')))
     ui.reviewCommentsButton.setIcon(QIcon(str(Path.cwd() / 'icons' / 'reviewComments.png')))
     ui.saveVersionButton.setIcon(QIcon(str(Path.cwd() / 'icons' / 'saveVersion.png')))
     ui.setProjectButton.setIcon(QIcon(str(Path.cwd() / 'icons' / 'setProject.png')))
-    ui.assetIconButton.setIcon(QIcon(str(Path.cwd() / 'icons' / 'takeSnapshotButton.png')))
+    #ui.assetIconButton.setIcon(QIcon(str(Path.cwd() / 'icons' / 'takeSnapshotButton.png')))
     ui.userIcon.setIcon(QIcon(str(Path.cwd() / 'icons' / 'userLogo.png')))
 
 

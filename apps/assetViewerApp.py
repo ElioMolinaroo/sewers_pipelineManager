@@ -46,7 +46,7 @@ def getAssetInfo(filepath):
 
     description = assetViewerLibs.getDescription(filepath, raw_asset_name)
 
-    # Get thumbnail path
+    '''# Get thumbnail path
     thumbnail_path = None
     dnt_path = filepath.split(raw_asset_name)[0]
     dnt_path = Path(dnt_path) / raw_asset_name / '_do_not_touch_'
@@ -57,8 +57,9 @@ def getAssetInfo(filepath):
             else:
                 thumbnail_path = None
     else:
-        thumbnail_path = None
+        thumbnail_path = None'''
 
+    #'thumbnail_path': thumbnail_path
     return {
         'asset_name': asset_name,
         'asset_type': asset_type,
@@ -66,8 +67,7 @@ def getAssetInfo(filepath):
         'last_save_user': last_save_user,
         'time_last_save': time_last_save,
         'latest_version': latest_version,
-        'description': description,
-        'thumbnail_path': thumbnail_path
+        'description': description
     }
 
 

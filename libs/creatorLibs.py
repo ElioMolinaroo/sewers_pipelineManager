@@ -41,7 +41,7 @@ def matchingFolder(directory, target_string):
     return False
 
 
-# Add the created shot to the project database
+'''# Add the created shot to the project database
 def addShotToDatabase(name: str, path, sequence: str, master: bool):
     # Get current database data
     current_project_cookies = loginLibs.loadJsonData(projectLibs.CURRENT_PROJECT_DATABASE)
@@ -77,7 +77,7 @@ def addAssetToDatabase(name: str, path, category: str):
         data['assets'].update(asset_entry)
 
     # Update the database
-    loginLibs.registerCookies(data, str(database_file))
+    loginLibs.registerCookies(data, str(database_file))'''
 
 
 # Build the sequence nice name from a shot
@@ -113,11 +113,11 @@ def createMayaFile(name, path):
     os.rename(old_file, new_file)
 
     # Add metadata
-    current_username = loginLibs.getCurrentUsername()
-    addUserMetadataToMayaFile(current_username, new_file, 13)
+    #current_username = loginLibs.getCurrentUsername()
+    #addUserMetadataToMayaFile(current_username, new_file, 13)
 
 
-# Adds username metadata to the corresponding maya file at the given line index
+'''# Adds username metadata to the corresponding maya file at the given line index
 def addUserMetadataToMayaFile(username: str, filepath, line_index: int):
     entry = f'fileInfo "savedBy" "{username}";\n'
 
@@ -126,7 +126,7 @@ def addUserMetadataToMayaFile(username: str, filepath, line_index: int):
         contents.insert(line_index, entry)
         fd.seek(0)
         fd.writelines(contents)
-        fd.close()
+        fd.close()'''
 
 
 # Uploads the asset or shot description in the given file, if file doesn't exist: creates it

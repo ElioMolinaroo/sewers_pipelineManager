@@ -95,6 +95,7 @@ def setCurrentProject(ui, current_project_database=CURRENT_PROJECT_DATABASE):
         # Sets the project path
         model = ui.model
         ui.fileManagerColumnView.setRootIndex(model.index(project_cookies[1]))
+        model.setRootPath(project_cookies[1])
         # Update the UI
         uiLibs.enableButtons(ui)
         uiLibs.projectTypeChangeUI(ui)
@@ -119,7 +120,7 @@ def filter_items(search_bar, search_list):
             item.setHidden(True)
 
 
-# Create the project json file
+'''# Create the project json file
 def createProjectData(project_path):
     # Create the data
     project_data = {"shots": {}, "assets": {}}
@@ -143,3 +144,4 @@ def getProjectData():
         return raw_data
     else:
         return ''
+'''

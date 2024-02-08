@@ -46,7 +46,7 @@ def openFolder(index):
     except:
         print('\nERROR: could not query item path as not item is selected...\n')
 
-
+"""
 # In the browser tab, renames everything in the asset to the given string
 def renameAsset(ui, index, new_nice_name):
     if new_nice_name == '' or index.data() is None:
@@ -101,10 +101,10 @@ def renameAsset(ui, index, new_nice_name):
             old_asset_data['path'] = str(new_asset_path)
             raw_database[object_type][new_safe_name] = old_asset_data
 
-            # Update the project cookies
+            '''# Update the project cookies
             current_project_cookies = loginLibs.loadJsonData(projectLibs.CURRENT_PROJECT_DATABASE)
             database_file = Path(current_project_cookies['path']) / 'project_data.json'
-            loginLibs.registerCookies(raw_database, str(database_file))
+            loginLibs.registerCookies(raw_database, str(database_file))'''
 
             # Refresh browser tab
             uiApp.browserUpdateAssets(ui)
@@ -147,7 +147,7 @@ def deleteAsset(ui, index):
     uiApp.browserUpdateShots(ui)
 
     print(f'\nSuccessfully moved {asset_name.upper()} to the trash folder.\n')
-
+"""
 
 # Moves a file/folder in the explorer to the trash folder of the SEWERS
 def deleteFile(ui, index):

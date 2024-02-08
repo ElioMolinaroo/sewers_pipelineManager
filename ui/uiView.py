@@ -14,6 +14,7 @@ from apps import uiApp
 from control import sewersController
 from libs import creatorLibs
 from libs import projectLibs
+from libs import loginLibs
 
 
 # Worker thread class for maya connection checking and updating
@@ -48,7 +49,8 @@ class SewersUI(QMainWindow):
         uiApp.themeToggle(self, self.fileManagerColumnView)
 
         # Create a variable with all the user-driven inputs
-        self.userUiInputs = [self.loginButton, self.logoutButton, self.recentFilesListWidget,
+        #self.loginButton, self.logoutButton, 
+        self.userUiInputs = [self.recentFilesListWidget,
                              self.playblastButton, self.publishButton, self.saveVersionButton,
                              self.fileManagerColumnView, self.createProjectButton, self.loadProjectButton,
                              self.setProjectButton, self.rightHandTabs]
@@ -71,14 +73,21 @@ class SewersUI(QMainWindow):
         self.worker.maya_disconnected_signal.connect(lambda: socketLibs.statusBarConnectionStatus(self, 'Not Connected', '#e32910'))
 
         # Login module events
-        self.loginButton.activated.connect(lambda: sewersController.loginRegisterProcess(self, LoginUI, RegisterUI))
-        self.logoutButton.clicked.connect(lambda: sewersController.logoutProcess(self))
+        #self.loginButton.activated.connect(lambda: sewersController.loginRegisterProcess(self, LoginUI, RegisterUI))
+        #self.logoutButton.clicked.connect(lambda: sewersController.logoutProcess(self))
         self.userIcon.pressed.connect(lambda: uiApp.themeToggle(self, self.fileManagerColumnView))
 
         # Project module events
         self.loadProjectButton.clicked.connect(lambda: sewersController.loadProject(self))
-        if self.loginButton.isEnabled() is False:
-            projectLibs.setCurrentProject(self)
+
+        #if self.loginButton.isEnabled() is False:
+        projectLibs.setCurrentProject(self)
+        dict_project_cookies = loginLibs.loadJsonData(projectLibs.CURRENT_PROJECT_DATABASE)
+        current_project_path = projectLibs.getCurrentProject(projectLibs.CURRENT_PROJECT_DATABASE)[1]
+        if len(dict_project_cookies) != 0 and len(current_project_path) != 0:
+            uiApp.browserUpdateAssets(self)
+            uiApp.browserSequenceUpdate(self)
+
         self.createProjectButton.clicked.connect(lambda: sewersController.createProjectUI(self, CreateProjectUI))
         self.setProjectButton.clicked.connect(lambda: sewersController.setProjectUI(self, SetProjectUI))
 
@@ -101,13 +110,13 @@ class SewersUI(QMainWindow):
 
         def goToShotSelectionPlusSaveIndex():
             global last_selected_index
-            item_address = sewersController.browserGoToSelection(self, self.shotListWidget, 'shots')
+            item_address = sewersController.browserGoToSelection(self, self.shotListWidget, '05_shot')
             last_selected_index = item_address
         self.shotListWidget.itemDoubleClicked.connect(lambda: goToShotSelectionPlusSaveIndex())
 
         def goToAssetSelectionPlusSaveIndex():
             global last_selected_index
-            item_address = sewersController.browserGoToSelection(self, self.assetListWidget, 'assets')
+            item_address = sewersController.browserGoToSelection(self, self.assetListWidget, '04_asset')
             last_selected_index = item_address
         self.assetListWidget.itemDoubleClicked.connect(lambda: goToAssetSelectionPlusSaveIndex())
         # Installing event filter for context menu
@@ -137,7 +146,7 @@ class SewersUI(QMainWindow):
         self.recentFilesListWidget.itemDoubleClicked.connect(lambda: recentFilesApp.goToSelectedFile(self))
 
         # Viewer module events
-        self.assetIconButton.clicked.connect(lambda: sewersController.thumbnailUpdateProcess(self, self.fileManagerColumnView))
+        #self.assetIconButton.clicked.connect(lambda: sewersController.thumbnailUpdateProcess(self, self.fileManagerColumnView))
         self.addCommentButton.clicked.connect(lambda: sewersController.addCommentUI(AddCommentUI))
         self.reviewCommentsButton.clicked.connect(lambda: sewersController.reviewCommentsUI(ReviewCommentsUI))
         self.rightHandTabs.currentChanged.connect(lambda: uiApp.updateCommentButtonCount(self, self.fileManagerColumnView))
@@ -235,7 +244,7 @@ class SewersUI(QMainWindow):
 
         self.thread.start()
 
-
+'''
 # Class for the login dialog window
 class LoginUI(QDialog):
     login_signal = pyqtSignal()
@@ -262,7 +271,7 @@ class RegisterUI(QDialog):
         # Define the behaviours of the OK button
         self.registerButtonBox.accepted.connect(lambda: sewersController.registerVerification(self))
 
-
+'''
 # Class for the create project dialog window
 class CreateProjectUI(QDialog):
     create_project_signal = pyqtSignal()

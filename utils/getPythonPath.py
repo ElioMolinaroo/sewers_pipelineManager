@@ -11,6 +11,10 @@ def getPythonPath():
     for root, dir, files in os.walk(search_path):
         if filename in files:
             result.append(os.path.join(root, filename))
+
+    if len(result) == 0 and "Elio" in str(os.getenv('USERPROFILE')):
+        result = ["C:/Users/Elio/anaconda3/envs/sewers/python.exe"]
+
     return result[0]
 
 

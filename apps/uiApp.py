@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 import sys
 
 from PyQt6 import QtCore
@@ -20,7 +21,7 @@ UI_THEME_STATE = 'light'
 # Preps the UI, adding the missing elements from the sewersUI.ui file
 def prepUi(ui):
     # Create the default connections for the login/register combo box
-    ui.loginButton.model().item(0).setEnabled(False)
+    #ui.loginButton.model().item(0).setEnabled(False)
 
     # Create and set a model for the tree view
     path = 'C:/'
@@ -43,7 +44,7 @@ def prepUi(ui):
     ui.createTypeComboBox.currentIndexChanged.connect(handleIndexChanged)
 
     # Update the assets
-    browserUpdateAssets(ui)
+    #browserUpdateAssets(ui)
 
     # Update the UI according to the project type
     uiLibs.projectTypeChangeUI(ui)
@@ -56,7 +57,7 @@ def prepUi(ui):
     return model
 
 
-# Initialise function of the login module, checking for cookies
+'''# Initialise function of the login module, checking for cookies
 def sewersInit():
     # Check for existing user cookies
     test_cookies = loginLibs.checkForCookies()
@@ -120,12 +121,12 @@ def loginRegisterUpdateUI(ui):
         ui.createProjectButton.setEnabled(True)
         ui.loadProjectButton.setEnabled(True)
         ui.setProjectButton.setEnabled(True)
-        ui.logoutButton.setEnabled(True)
+        ui.logoutButton.setEnabled(True)'''
 
 
 # Updates the sequences in the sequences list
 def browserSequenceUpdate(ui):
-    data = projectLibs.getProjectData()
+    '''data = projectLibs.getProjectData()
 
     sequences = []
 
@@ -143,48 +144,100 @@ def browserSequenceUpdate(ui):
         for i in sorted_sequences:
             ui.shotComboBox.addItem(i)
 
-        ui.shotComboBox.setCurrentIndex(0)
+        ui.shotComboBox.setCurrentIndex(0)'''
+
+    shot_path = Path(ui.model.rootPath()) / "05_shot"
+    all_shots = [i for i in os.listdir(shot_path) if i.startswith("sq")]
+
+    sequences = []
+    for shot in all_shots:
+        if float(shot[2:6])/10 not in sequences:
+            sequences.append(float(shot[2:6])/10)
+
+    sequences_names = [f"Sequence {i}" for i in sequences]
+
+    # Update the UI
+    ui.shotComboBox.clear()
+    for i in sequences_names:
+        ui.shotComboBox.addItem(i)
+
+    ui.shotComboBox.setCurrentIndex(0)
 
 
 # Updates the shot list according to the selected sequence
 def browserUpdateShots(ui):
-    raw_data = projectLibs.getProjectData()
+    '''raw_data = projectLibs.getProjectData()
 
     if len(raw_data) != 0:
-        shots_database = raw_data['shots']
+    shots_database = raw_data['shots']'''
 
-        # Get the current sequence tab
+    shot_path = Path(ui.model.rootPath()) / "05_shot"
+    all_shots = [i for i in os.listdir(shot_path) if i.startswith("sq")]
+
+    sequences = []
+    for shot in all_shots:
+        if float(shot[2:6])/10 not in sequences:
+            sequences.append(float(shot[2:6])/10)
+
+    sequences_names = [f"Sequence {i}" for i in sequences]
+
+    shots_data = {}
+
+    for seq in sequences_names:
+        shots_data[seq] = []
+
+    for shot in all_shots:
+        seq_index = sequences.index(float(shot[2:6])/10)
+        shots_data[sequences_names[seq_index]].append(shot)
+
+    # Get the current sequence tab
+    current_browsed_sequence = ui.shotComboBox.currentText()
+     
+    if len(current_browsed_sequence) == 0:
+        browserSequenceUpdate(ui)
         current_browsed_sequence = ui.shotComboBox.currentText()
 
-        current_sequence_shots = browserLibs.findShotsWithValue(shots_database, 'sequence', current_browsed_sequence)
+    ui.shotListWidget.clear()
 
-        ui.shotListWidget.clear()
+    for shot in shots_data[current_browsed_sequence]:
+        ui.shotListWidget.addItem(shot)
 
-        for shot in current_sequence_shots:
-            ui.shotListWidget.addItem(shot)
+
+
+    '''#ui.shotComboBox.clear()
+    current_sequence_shots = browserLibs.findShotsWithValue(shots_database, 'sequence', current_browsed_sequence)
+
+    ui.shotListWidget.clear()
+
+    for shot in current_sequence_shots:
+        ui.shotListWidget.addItem(shot)'''
 
 
 # Updates the asset list according to the selected type
 def browserUpdateAssets(ui):
-    raw_data = projectLibs.getProjectData()
+    '''raw_data = projectLibs.getProjectData()
 
     if len(raw_data) != 0:
-        assets_database = raw_data['assets']
+    assets_database = raw_data['assets']'''
 
-        current_browsed_type = ui.assetComboBox.currentText()
-        current_browsed_type = current_browsed_type.lower()
+    asset_path = Path(ui.model.rootPath()) / "04_asset"
+    categories = ["all"] + os.listdir(str(asset_path))
 
-        ui.assetListWidget.clear()
+    assets_data = {}
+    for cat in categories[1::]:
+        assets_data[cat] = os.listdir(str(asset_path / cat))
 
-        # Show the assets according to their type
-        if current_browsed_type == 'all':
-            for asset in assets_database:
-                ui.assetListWidget.addItem(asset)
-        else:
-            # Get the assets matching the selected type
-            assets_list = browserLibs.findShotsWithValue(assets_database, 'category', current_browsed_type)
-            for asset in assets_list:
-                ui.assetListWidget.addItem(asset)
+    current_browsed_type = ui.assetComboBox.currentText()
+
+    ui.assetListWidget.clear()
+
+    # Show the assets according to their type
+    if current_browsed_type == 'all':
+        for cat in categories[1::]:
+            ui.assetListWidget.addItems(assets_data[cat])
+    else:
+        # Get the assets matching the selected type
+        ui.assetListWidget.addItems(assets_data[current_browsed_type])
 
 
 # Execute to launch the Create Project dialog UI

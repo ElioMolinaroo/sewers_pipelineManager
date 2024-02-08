@@ -16,7 +16,7 @@ def getPathToItem(index):
 
     return full_path
 
-
+'''
 # Processes asset data to feed the renameAsset function
 def processAssetData(index):
     # Get asset name
@@ -39,7 +39,7 @@ def processAssetData(index):
         old_asset_path = None
 
     return [old_asset_path, old_asset_name, raw_data, object_type]
-
+'''
 
 # Gets the path to inside a folder or to the folder a file is contained in depending on what's selected
 def getRelativePathToFileOrFolder(path):

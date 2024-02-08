@@ -18,10 +18,10 @@ def createAsset(ui):
         print('\nERROR: No name was provided for the asset...\n')
 
     else:
-        # Queries the path to the asset directory corresponding to the chosen category
+        '''# Queries the path to the asset directory corresponding to the chosen category
         current_project_cookies = loginLibs.loadJsonData(projectLibs.CURRENT_PROJECT_DATABASE)
-        current_project_path = current_project_cookies['assets_path']
-        asset_path = Path(current_project_path) / asset_type
+        current_project_path = current_project_cookies['assets_path']'''
+        asset_path = Path(ui.model.rootPath()) / "04_asset" / asset_type
 
         # Check if the asset name is somewhere in the path, if yes create a safe name
         if creatorLibs.checkForNameInPath(nice_asset_name, str(asset_path)) is True:
@@ -30,33 +30,29 @@ def createAsset(ui):
             safe_asset_name = nice_asset_name
 
         # Create the folder structure
-        if len(current_project_path) != 0:
-            base_folder_structure = structures.asset_template
-            folder_structure = projectLibs.changeProjectName(safe_asset_name, base_folder_structure)
+        base_folder_structure = structures.asset_template
+        folder_structure = projectLibs.changeProjectName(safe_asset_name, base_folder_structure)
 
-            projectLibs.createFolderStructure(folder_structure, asset_path)
+        projectLibs.createFolderStructure(folder_structure, asset_path)
 
-            # Create the comments database
-            with open(str(asset_path / safe_asset_name / '_do_not_touch_' / 'comments_database.json'), 'w') as file:
-                file.write('[]')
-                file.close()
+        # Create the comments database
+        with open(str(asset_path / safe_asset_name / '_do_not_touch_' / 'comments_database.json'), 'w') as file:
+            file.write('[]')
+            file.close()
 
-            # Writes the asset description in file at the given filepath
-            current_asset_database = asset_path / safe_asset_name / '_do_not_touch_' / 'description.txt'
-            creatorLibs.uploadAssetDescription(description, current_asset_database)
+        # Writes the asset description in file at the given filepath
+        current_asset_database = asset_path / safe_asset_name / '_do_not_touch_' / 'description.txt'
+        creatorLibs.uploadAssetDescription(description, current_asset_database)
 
-            # Add the asset to the database
-            path = str(Path(asset_path) / safe_asset_name)
-            creatorLibs.addAssetToDatabase(safe_asset_name, path, asset_type)
+        '''# Add the asset to the database
+        path = str(Path(asset_path) / safe_asset_name)
+        creatorLibs.addAssetToDatabase(safe_asset_name, path, asset_type)'''
 
-            # Update shot and asset UI
-            uiApp.browserUpdateShots(ui)
-            uiApp.browserUpdateAssets(ui)
+        # Update shot and asset UI
+        #uiApp.browserUpdateShots(ui)
+        uiApp.browserUpdateAssets(ui)
 
-            print(f'\nThe {nice_asset_name.upper()} asset was created successfully.\n')
-
-        else:
-            print('\nERROR: This project structure does not support asset creation...\n')
+        print(f'\nThe {nice_asset_name.upper()} asset was created successfully.\n')
 
 
 # Logic for preparing shot names
@@ -83,10 +79,10 @@ def createShot(ui, nice_shot_name):
     # Query the description
     description = ui.shotDescriptionPlainText.toPlainText()
 
-    # Queries the path to the asset directory corresponding to the chosen category
+    '''# Queries the path to the asset directory corresponding to the chosen category
     current_project_cookies = loginLibs.loadJsonData(projectLibs.CURRENT_PROJECT_DATABASE)
-    raw_path = current_project_cookies['shots_path']
-    shots_path = Path(raw_path)
+    raw_path = current_project_cookies['shots_path']'''
+    shots_path = Path(ui.model.rootPath()) / "05_shot"
 
     # Check if the shot name is somewhere in the path, if yes create a safe name
     if creatorLibs.checkForNameInPath(nice_shot_name, str(shots_path)) is True:
@@ -94,36 +90,32 @@ def createShot(ui, nice_shot_name):
     else:
         safe_asset_name = nice_shot_name
 
-    # Create the folder structure
-    if len(raw_path) != 0:
-        base_folder_structure = structures.shot_template
-        folder_structure = projectLibs.changeProjectName(safe_asset_name, base_folder_structure)
+    # Create the folder structure:
+    base_folder_structure = structures.shot_template
+    folder_structure = projectLibs.changeProjectName(safe_asset_name, base_folder_structure)
 
-        # Create the shot folders
-        projectLibs.createFolderStructure(folder_structure, shots_path)
+    # Create the shot folders
+    projectLibs.createFolderStructure(folder_structure, shots_path)
 
-        # Create the comments database
-        with open(str(shots_path / safe_asset_name / '_do_not_touch_' / 'comments_database.json'), 'w') as file:
-            file.write('[]')
-            file.close()
+    # Create the comments database
+    with open(str(shots_path / safe_asset_name / '_do_not_touch_' / 'comments_database.json'), 'w') as file:
+        file.write('[]')
+        file.close()
 
-        # Writes the shot description in file at the given filepath
-        current_shot_database = shots_path / safe_asset_name / '_do_not_touch_' / 'description.txt'
-        creatorLibs.uploadAssetDescription(description, current_shot_database)
+    # Writes the shot description in file at the given filepath
+    current_shot_database = shots_path / safe_asset_name / '_do_not_touch_' / 'description.txt'
+    creatorLibs.uploadAssetDescription(description, current_shot_database)
 
-        # Add the shot to the database
-        shots_path = Path(shots_path) / safe_asset_name
-        # Query sequence and master
-        master = True if '_master_layout' in safe_asset_name else False
-        sequence = creatorLibs.buildSequenceNiceName(safe_asset_name)
+    # Add the shot to the database
+    shots_path = Path(shots_path) / safe_asset_name
+    # Query sequence and master
+    master = True if '_master_layout' in safe_asset_name else False
+    sequence = creatorLibs.buildSequenceNiceName(safe_asset_name)
 
-        creatorLibs.addShotToDatabase(safe_asset_name, shots_path, sequence, master)
+    #creatorLibs.addShotToDatabase(safe_asset_name, shots_path, sequence, master)
 
-        # Update shot and asset UI
-        uiApp.browserUpdateShots(ui)
-        uiApp.browserUpdateAssets(ui)
+    # Update shot and asset UI
+    uiApp.browserUpdateShots(ui)
+    uiApp.browserUpdateAssets(ui)
 
-        print(f'\n{nice_shot_name} was created successfully.\n')
-
-    else:
-        print('\nERROR: This project structure does not support shot creation...\n')
+    print(f'\n{nice_shot_name} was created successfully.\n')

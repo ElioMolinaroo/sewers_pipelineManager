@@ -26,17 +26,17 @@ from libs import fileLibs
 from ui import uiView
 
 
-# Implement the logout process
+'''# Implement the logout process
 def logoutProcess(ui):
     # Disable the interface except for the login button
     uiLibs.disableButtons(ui)
     # Call the logout delete cookies function
     loginApp.userLogout(ui)
     # Call the project reset function
-    projectLibs.setProjectAsDefault(ui)
+    projectLibs.setProjectAsDefault(ui)'''
 
 
-# Implement the login or registering process
+'''# Implement the login or registering process
 def loginRegisterProcess(ui, login_dialog, register_dialog):
     # Check what the user chose
     login_or_register = uiLibs.comboBoxSelection(ui.loginButton)
@@ -52,34 +52,34 @@ def loginRegisterProcess(ui, login_dialog, register_dialog):
         instance_register = register_dialog()
         instance_register.register_signal.connect(lambda: uiApp.loginRegisterUpdateUI(ui))
         instance_register.exec()
-
+'''
 
 # Initialises the UI look according to the available cookies
 def initUi(ui):
     # execute sewersInit
-    return_cookies = uiApp.sewersInit()
+    #return_cookies = uiApp.sewersInit()
 
     # Lock the UI if no projects are set
     current_project_path = projectLibs.getCurrentProject(projectLibs.CURRENT_PROJECT_DATABASE)[1]
 
     # Set the connections if a user is already logged in
-    if 'loggedIn' in return_cookies:
-        uiLibs.enableButtons(ui)
-        # Look for a current project in the cookies if not, disables most of the UI
-        if len(current_project_path) == 0:
-            for i in ui.userUiInputs:
-                i.setEnabled(False)
-            ui.createProjectButton.setEnabled(True)
-            ui.loadProjectButton.setEnabled(True)
-            ui.setProjectButton.setEnabled(True)
-            ui.logoutButton.setEnabled(True)
-        # Update the current username and its permissions
-        ui.usernameLabel.setText(return_cookies[1])
+    #if 'loggedIn' in return_cookies:
+    uiLibs.enableButtons(ui)
+    # Look for a current project in the cookies if not, disables most of the UI
+    if len(current_project_path) == 0:
+        for i in ui.userUiInputs: 
+            i.setEnabled(False)
+        ui.createProjectButton.setEnabled(True)
+        ui.loadProjectButton.setEnabled(True)
+        ui.setProjectButton.setEnabled(True)
+        #ui.logoutButton.setEnabled(True)
+    '''# Update the current username and its permissions
+    ui.usernameLabel.setText(return_cookies[1])
 
     # Set the connections if no user is logged in
     elif 'noLog' in return_cookies:
         uiLibs.disableButtons(ui)
-        ui.loginButton.setEnabled(True)
+        ui.loginButton.setEnabled(True)'''
 
     # Preps the UI, adding the missing elements from the sewersUI.ui file
     model = uiApp.prepUi(ui)
@@ -87,7 +87,7 @@ def initUi(ui):
     return model
 
 
-# Verifies whether the login credentials entered are correct or not
+'''# Verifies whether the login credentials entered are correct or not
 def loginVerification(ui):
     # Gather the content of the username and password slots
     input_username = uiLibs.returnLineEdit(ui.usernameLineEdit)
@@ -115,7 +115,7 @@ def registerVerification(ui):
         print('\nERROR: The confirmation is different than the password...\n')
     else:
         loginApp.userRegister(input_username, input_password)
-        ui.register_signal.emit()
+        ui.register_signal.emit()'''
 
 
 # Function executed when the load project button is clicked
@@ -137,6 +137,7 @@ def loadProject(ui):
         ui.projectNameLabel.setText(str.upper(project_name))
         model = ui.model
         ui.fileManagerColumnView.setRootIndex(model.index(project_path))
+        model.setRootPath(project_path)
 
         # Update the UI
         uiLibs.enableButtons(ui)
@@ -259,7 +260,7 @@ def browserUpdateUI(ui):
     # Check the name of the button and display the list view accordingly
     if ui.browserButton.text() == 'ASSET BROWSER':
         # Update the list of sequences
-        uiApp.browserSequenceUpdate(ui)
+        #uiApp.browserSequenceUpdate(ui)
 
         # Update UI
         ui.browserButton.setText('SHOT BROWSER')
@@ -272,28 +273,36 @@ def browserUpdateUI(ui):
 
 # Gets the currently selected item and navigates to it in the folder view
 def browserGoToSelection(ui, clicked_widget, shots_or_assets: str):
-    # Get current database data
+    '''# Get current database data
     current_project_cookies = loginLibs.loadJsonData(projectLibs.CURRENT_PROJECT_DATABASE)
     database_file = Path(current_project_cookies['path']) / 'project_data.json'
     raw_data = loginLibs.loadJsonData(str(database_file))
-    database = raw_data[shots_or_assets]
+    database = raw_data[shots_or_assets]'''
 
     # Get the selected name
     item = clicked_widget.currentItem()
     name = item.text()
+    asset_categories = [ui.assetComboBox.itemText(i) for i in range(1, ui.assetComboBox.count())]
 
     # Query the category of asset/shot
-    if shots_or_assets == 'shots':
+    if shots_or_assets == '05_shot':
         category = ui.shotCategoryComboBox.currentText()
-    elif shots_or_assets == 'assets':
+    elif shots_or_assets == '04_asset':
         category = ui.assetCategoryComboBox.currentText()
 
     # Build the path to the desired directory
-    selection_path = database[name]['path']
-    if shots_or_assets == 'shots':
-        selection_path = str(Path(selection_path) / 'maya/scenes' / category)
-    elif shots_or_assets == 'assets':
-        selection_path = str(Path(selection_path) / 'maya/scenes/edit' / category)
+    #selection_path = database[name]['path']
+    selection_path = Path(ui.model.rootPath()) / shots_or_assets
+    if shots_or_assets == '05_shot':
+        selection_path = str(Path(selection_path) / name / 'maya/scenes' / category)
+    elif shots_or_assets == '04_asset':
+        for cat in asset_categories:
+            test_path = Path(selection_path / cat / name / 'maya/scenes/edit' / category).exists()
+            if test_path is True:
+                correct_asset_category = cat
+                break
+
+        selection_path = str(Path(selection_path) / correct_asset_category / name / 'maya/scenes/edit' / category)
 
     # Update the UI to the selected path
     model = ui.model
@@ -349,7 +358,8 @@ def openMayaFileProcess(ui, file_path: str):
         print("\nERROR: This file couldn't be open because of an issue with the path...\n")
 
     else:
-        cmds_open_command = f'import maya.cmds as cmds; cmds.file(force=1, save=1); cmds.file(r"{file_path}", force=1, open=1); cmds.commandPort(name=":{socketLibs.PORT}", sourceType="python");'
+        #cmds.file(force=1, save=1); 
+        cmds_open_command = f'import maya.cmds as cmds; cmds.file(r"{file_path}", force=1, open=1); cmds.commandPort(name=":{socketLibs.PORT}", sourceType="python");'
 
         if socketLibs.isProgramOpen('maya.exe') is True:
             # Check if Maya is open and connected
@@ -394,8 +404,8 @@ def saveVersionProcess(ui):
             actionButtonsApp.saveVersion(ui, new_path, new_name, name)
 
             # Embed the saved by data into the file
-            current_username = loginLibs.getCurrentUsername()
-            socketApp.sendMayaCommandProcess(ui, f'cmds.fileInfo("savedBy", "{current_username}")')
+            #current_username = loginLibs.getCurrentUsername()
+            #socketApp.sendMayaCommandProcess(ui, f'cmds.fileInfo("savedBy", "{current_username}")')
 
     else:
         print('\nERROR: Maya is not open or not connected...\n')
@@ -422,8 +432,8 @@ def savePublishProcess(ui):
             actionButtonsApp.savePublish(publish_exists, name, file_path, path)
 
             # Embed the saved by data into the file
-            current_username = loginLibs.getCurrentUsername()
-            socketApp.sendMayaCommandProcess(ui, f'cmds.fileInfo("savedBy", "{current_username}")')
+            #current_username = loginLibs.getCurrentUsername()
+            #socketApp.sendMayaCommandProcess(ui, f'cmds.fileInfo("savedBy", "{current_username}")')
     else:
         print('\nERROR: Maya is not open or not connected...\n')
 
@@ -463,8 +473,8 @@ def updateViewerInfo(ui, explorer_widget):
             ui.timeAnswerLabel.setText(asset_info['time_last_save'])
             ui.latestVersionAnswerLabel.setText(asset_info['latest_version'])
             ui.descriptionAnswerLabel.setText(asset_info['description'])
-            if asset_info['thumbnail_path'] is not None:
-                ui.assetIconButton.setIcon(QIcon(asset_info['thumbnail_path']))
+            #if asset_info['thumbnail_path'] is not None:
+                #ui.assetIconButton.setIcon(QIcon(asset_info['thumbnail_path']))
 
     except:
         print('\nERROR: could not update the viewer info...\n')
@@ -497,7 +507,8 @@ def addCommentProcess(ui, explorer_widget, sewers_ui):
         pass
     else:
         # Get the current active username
-        username = loginLibs.getCurrentUsername()
+        #username = loginLibs.getCurrentUsername()
+        username = "Author"
         # Get the current date and time and formats it
         current_time = time.time()
         raw_time = time.localtime(current_time)
@@ -547,7 +558,7 @@ def reviewCommentsProcess(ui, sewers_ui):
             uiApp.createCommentWidgets(ui, usernames[i], comment_time_stamps[i], comments[i], i+1)
 
 
-# Updates the thumbnail of the viewer
+'''# Updates the thumbnail of the viewer
 def thumbnailUpdateProcess(ui, explorer_widget):
     # Get the path to the image selected by the user
     raw_output = assetViewerLibs.fileDialogReturnFile(ui, 'Choose a thumbnail for the asset/shot...')
@@ -566,7 +577,7 @@ def thumbnailUpdateProcess(ui, explorer_widget):
         # Upload the selected file to the asset database
         shutil.copy(source_path, thumbnail_path)
 
-        updateViewerInfo(ui, explorer_widget)
+        updateViewerInfo(ui, explorer_widget)'''
 
 
 # Process for updating asset name in the browser

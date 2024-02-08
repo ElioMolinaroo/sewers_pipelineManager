@@ -56,118 +56,6 @@
           <property name="rightMargin">
            <number>25</number>
           </property>
-          <item row="4" column="0" colspan="3">
-           <widget class="QComboBox" name="loginButton">
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="layoutDirection">
-             <enum>Qt::LeftToRight</enum>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QComboBox {
-
-    border-radius: 3px;
-    padding: 2px;
-    padding-left: 20px; /* Adjust the padding to accommodate the space for the icon */
-    selection-background-color: lightgray;
-}
-
-QComboBox::drop-down {
-    width: 0px;
-}
-
-QComboBox::down-arrow {
-    image: none;
-    width: 0px;
-    height: 0px;
-}
-
-QComboBox QAbstractItemView {
-    padding: 2px;
-    text-align: center; /* Center-align the text */
-}
-
-QComboBox::indicator {
-    subcontrol-origin: padding;
-    subcontrol-position: left;
-    left: 2px; /* Adjust the left position as needed */
-    width: 16px;
-    height: 16px;
-}
-
-QComboBox::indicator:editable {
-    image: url(icons/logIn.png); /* Replace with your own icon image path */
-}
-</string>
-            </property>
-            <property name="editable">
-             <bool>false</bool>
-            </property>
-            <property name="insertPolicy">
-             <enum>QComboBox::InsertAtBottom</enum>
-            </property>
-            <property name="frame">
-             <bool>true</bool>
-            </property>
-            <item>
-             <property name="text">
-              <string>Login / Register</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Login</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Register</string>
-             </property>
-            </item>
-           </widget>
-          </item>
-          <item row="5" column="0" colspan="3">
-           <widget class="QPushButton" name="logoutButton">
-            <property name="enabled">
-             <bool>false</bool>
-            </property>
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="text">
-             <string>  Logout</string>
-            </property>
-            <property name="icon">
-             <iconset>
-              <normaloff>../icons/logOut.png</normaloff>../icons/logOut.png</iconset>
-            </property>
-            <property name="iconSize">
-             <size>
-              <width>20</width>
-              <height>16</height>
-             </size>
-            </property>
-           </widget>
-          </item>
           <item row="2" column="0">
            <widget class="QPushButton" name="userIcon">
             <property name="minimumSize">
@@ -216,29 +104,6 @@ QComboBox::indicator:editable {
             </property>
            </spacer>
           </item>
-          <item row="2" column="1" colspan="2">
-           <widget class="QLabel" name="usernameLabel">
-            <property name="maximumSize">
-             <size>
-              <width>175</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>Segoe UI</family>
-              <pointsize>15</pointsize>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>_____</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-            </property>
-           </widget>
-          </item>
          </layout>
         </item>
         <item>
@@ -246,6 +111,7 @@ QComboBox::indicator:editable {
           <property name="font">
            <font>
             <pointsize>11</pointsize>
+            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>
@@ -304,6 +170,7 @@ QComboBox::indicator:editable {
             <property name="font">
              <font>
               <pointsize>13</pointsize>
+              <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
@@ -400,6 +267,9 @@ QComboBox::indicator:editable {
           </property>
           <item>
            <widget class="QPushButton" name="playblastButton">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="sizePolicy">
              <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
               <horstretch>0</horstretch>
@@ -579,6 +449,7 @@ QComboBox::indicator:editable {
              <property name="font">
               <font>
                <pointsize>13</pointsize>
+               <weight>75</weight>
                <bold>true</bold>
               </font>
              </property>
@@ -716,6 +587,7 @@ QComboBox::indicator:editable {
                    <property name="font">
                     <font>
                      <pointsize>11</pointsize>
+                     <weight>50</weight>
                      <bold>false</bold>
                     </font>
                    </property>
@@ -879,6 +751,7 @@ QComboBox::indicator:editable {
                    <property name="font">
                     <font>
                      <pointsize>11</pointsize>
+                     <weight>50</weight>
                      <bold>false</bold>
                     </font>
                    </property>
@@ -1025,6 +898,7 @@ QComboBox::indicator:editable {
            <property name="font">
             <font>
              <pointsize>12</pointsize>
+             <weight>75</weight>
              <bold>true</bold>
             </font>
            </property>
@@ -1085,12 +959,12 @@ QPushButton:focus {
                </property>
                <item>
                 <property name="text">
-                 <string>All</string>
+                 <string>all</string>
                 </property>
                </item>
                <item>
                 <property name="text">
-                 <string>Character</string>
+                 <string>character</string>
                 </property>
                </item>
                <item>
@@ -1100,12 +974,12 @@ QPushButton:focus {
                </item>
                <item>
                 <property name="text">
-                 <string>Prop</string>
+                 <string>prop</string>
                 </property>
                </item>
                <item>
                 <property name="text">
-                 <string>Set</string>
+                 <string>set</string>
                 </property>
                </item>
               </widget>
@@ -1202,11 +1076,6 @@ QPushButton:focus {
                  <pointsize>11</pointsize>
                 </font>
                </property>
-               <item>
-                <property name="text">
-                 <string>No Sequence</string>
-                </property>
-               </item>
               </widget>
              </item>
              <item>
@@ -1259,50 +1128,13 @@ QPushButton:focus {
         <attribute name="title">
          <string>Viewer</string>
         </attribute>
-        <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,1,0,0">
-         <item>
-          <widget class="QPushButton" name="assetIconButton">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>125</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>125</width>
-             <height>125</height>
-            </size>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QPushButton {
-    background-color: transparent;
-    border: none;
-}</string>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="icon">
-            <iconset>
-             <normaloff>../icons/takeSnapshotButton.png</normaloff>../icons/takeSnapshotButton.png</iconset>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>125</width>
-             <height>125</height>
-            </size>
-           </property>
-           <property name="autoRepeat">
-            <bool>false</bool>
-           </property>
-          </widget>
-         </item>
+        <layout class="QVBoxLayout" name="verticalLayout" stretch="0,1,0,0">
          <item>
           <widget class="QLabel" name="assetNameLabel">
            <property name="font">
             <font>
              <pointsize>13</pointsize>
+             <weight>75</weight>
              <bold>true</bold>
             </font>
            </property>
@@ -1379,28 +1211,6 @@ QPushButton:focus {
             </widget>
            </item>
            <item row="2" column="0">
-            <widget class="QLabel" name="savedByLabel">
-             <property name="font">
-              <font>
-               <pointsize>11</pointsize>
-              </font>
-             </property>
-             <property name="text">
-              <string>Saved by: </string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="1">
-            <widget class="QLabel" name="savedByAnswerLabel">
-             <property name="text">
-              <string>...</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="0">
             <widget class="QLabel" name="timeLabel">
              <property name="font">
               <font>
@@ -1412,7 +1222,7 @@ QPushButton:focus {
              </property>
             </widget>
            </item>
-           <item row="3" column="1">
+           <item row="2" column="1">
             <widget class="QLabel" name="timeAnswerLabel">
              <property name="text">
               <string>...</string>
@@ -1422,7 +1232,7 @@ QPushButton:focus {
              </property>
             </widget>
            </item>
-           <item row="4" column="0">
+           <item row="3" column="0">
             <widget class="QLabel" name="latestVersionLabel">
              <property name="font">
               <font>
@@ -1434,7 +1244,7 @@ QPushButton:focus {
              </property>
             </widget>
            </item>
-           <item row="4" column="1">
+           <item row="3" column="1">
             <widget class="QLabel" name="latestVersionAnswerLabel">
              <property name="text">
               <string>...</string>
@@ -1444,7 +1254,7 @@ QPushButton:focus {
              </property>
             </widget>
            </item>
-           <item row="5" column="0">
+           <item row="4" column="0">
             <widget class="QLabel" name="descriptionLabel">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -1477,7 +1287,7 @@ QPushButton:focus {
              </property>
             </widget>
            </item>
-           <item row="5" column="1">
+           <item row="4" column="1">
             <widget class="QLabel" name="descriptionAnswerLabel">
              <property name="text">
               <string>...</string>
@@ -1491,6 +1301,9 @@ QPushButton:focus {
          </item>
          <item>
           <widget class="QPushButton" name="addCommentButton">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="sizePolicy">
             <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
              <horstretch>0</horstretch>
@@ -1516,10 +1329,16 @@ QPushButton:focus {
             <iconset>
              <normaloff>../icons/addComment.png</normaloff>../icons/addComment.png</iconset>
            </property>
+           <property name="default">
+            <bool>false</bool>
+           </property>
           </widget>
          </item>
          <item>
           <widget class="QPushButton" name="reviewCommentsButton">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="sizePolicy">
             <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
              <horstretch>0</horstretch>

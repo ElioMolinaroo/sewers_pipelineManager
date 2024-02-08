@@ -9,10 +9,10 @@ LOGIN_COOKIES_DATABASE = Path(os.getenv('USERPROFILE')) / '.sewers' / 'databases
 """Create the functions of the login module"""
 
 
-# Creates the formatting of the username/password pair into a dictionary entry
+'''# Creates the formatting of the username/password pair into a dictionary entry
 def formatCredentialsEntry(username: str, password: str, permissions_level: str):
     return {"username": username, "password": password, "permissions_level": permissions_level}
-
+'''
 
 # Loads data from a JSON file as a dictionary
 def loadJsonData(database_path):
@@ -64,7 +64,7 @@ def getDataAtPosition(database_list: list, data_position: int):
     return database_list[data_position]
 
 
-# Get the current username from the cookies
+'''# Get the current username from the cookies
 def getCurrentUsername():
     # Get the path to the users database
     database_path = pathToDatabase('preLoginCookies.json')
@@ -90,7 +90,7 @@ def checkForCookies(cookies_path=LOGIN_COOKIES_DATABASE):
     elif len(user_cookies) == 1:
         return 1
     else:
-        return 2
+        return 2'''
 
 
 # Registers a username in the cookies' database

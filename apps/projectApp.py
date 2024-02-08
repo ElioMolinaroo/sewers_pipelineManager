@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from databases.projectData import projectStructures
+from databases import projectStructures
 from libs import loginLibs
 from libs import projectLibs
 
@@ -16,13 +16,11 @@ def prepareLoadProject(ui):
         # Get the name of the project
         project_name = projectLibs.getFolderName(project_path)
 
-        # Look for a project_data.json file
-        if Path(Path(project_path) / 'project_data.json').exists() is True:
-            # Look for a 09_print folder (means it's a pipeline project)
-            if Path(Path(project_path) / '09_print').exists() is True:
-                project_type = 'pipeline'
-            elif Path(Path(project_path) / '04_workspace').exists() is True:
-                project_type = 'asset'
+        # Identify the pipeline type
+        if Path(Path(project_path) / '09_print').exists() is True:
+            project_type = 'pipeline'
+        elif Path(Path(project_path) / '04_workspace').exists() is True:
+            project_type = 'asset'
         else:
             project_type = ''
 
@@ -74,8 +72,8 @@ def createProject(project_name: str, project_path, project_template: str):
     # Update project path to be INSIDE the directory and not just before it
     project_path = f'{project_path}/{project_name}'
 
-    # Create the project database
-    projectLibs.createProjectData(project_path)
+    '''# Create the project database
+    projectLibs.createProjectData(project_path)'''
 
     # Replace cookies in the database
     cookies_path = projectLibs.CURRENT_PROJECT_DATABASE

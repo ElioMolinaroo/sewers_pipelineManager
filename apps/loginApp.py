@@ -3,7 +3,7 @@ import libs.loginLibs as loginLibs
 BASE_PERMISSIONS_LEVEL = 'artist'
 
 
-# Registers a new user
+'''# Registers a new user
 def userRegister(username: str, password: str):
     # Get the path to the users database
     database_path = loginLibs.pathToDatabase('users.json')
@@ -69,4 +69,4 @@ def userLogout(ui):
     loginLibs.deleteCookies()
     # Change the username back to the default ____
     ui.usernameLabel.setText('_____')
-    print("\nYou're logged out.\n")
+    print("\nYou're logged out.\n")'''
