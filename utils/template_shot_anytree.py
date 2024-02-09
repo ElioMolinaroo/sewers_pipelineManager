@@ -1,6 +1,7 @@
 from anytree import Node
 from anytree.exporter import DictExporter
 
+import pprint
 
 # Utils
 def inputOutput(parent_node):
@@ -22,6 +23,7 @@ def houdiniProject(parent_node):
     Node('sim', parent=parent_node)
     Node('tex', parent=parent_node)
     Node('video', parent=parent_node)
+    Node('workFiles', parent=parent_node)
 
 
 def mayaProject(parent_node):
@@ -61,4 +63,4 @@ exporter = DictExporter()
 nested_dict = exporter.export(root)
 
 # Print the nested dictionaries
-print(nested_dict)
+pprint.pprint(nested_dict)

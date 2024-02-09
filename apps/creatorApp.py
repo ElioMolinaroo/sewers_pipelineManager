@@ -35,7 +35,7 @@ def createAsset(ui):
 
         projectLibs.createFolderStructure(folder_structure, asset_path)
 
-        # Create the comments database
+        '''# Create the comments database
         with open(str(asset_path / safe_asset_name / '_do_not_touch_' / 'comments_database.json'), 'w') as file:
             file.write('[]')
             file.close()
@@ -44,7 +44,7 @@ def createAsset(ui):
         current_asset_database = asset_path / safe_asset_name / '_do_not_touch_' / 'description.txt'
         creatorLibs.uploadAssetDescription(description, current_asset_database)
 
-        '''# Add the asset to the database
+        # Add the asset to the database
         path = str(Path(asset_path) / safe_asset_name)
         creatorLibs.addAssetToDatabase(safe_asset_name, path, asset_type)'''
 

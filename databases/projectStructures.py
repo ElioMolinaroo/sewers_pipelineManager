@@ -177,279 +177,84 @@ struct_assetESMA = {
 assets_assetESMA = ''
 shots_assetESMA = ''
 
-struct_pipelineESMA = {
-  "name": "projectName",
-  "children": [
-    {
-      "name": "00_management"
-    },
-    {
-      "name": "01_external_data"
-    },
-    {
-      "name": "02_ressource"
-    },
-    {
-      "name": "03_preprod",
-      "children": [
-        {
-          "name": "01_scenario",
-          "children": [
-            {
-              "name": "edit"
-            },
-            {
-              "name": "publish"
-            }
-          ]
-        },
-        {
-          "name": "02_storyboom",
-          "children": [
-            {
-              "name": "edit"
-            },
-            {
-              "name": "publish"
-            }
-          ]
-        },
-        {
-          "name": "03_fond_forme",
-          "children": [
-            {
-              "name": "edit"
-            },
-            {
-              "name": "publish"
-            }
-          ]
-        },
-        {
-          "name": "04_lumascript",
-          "children": [
-            {
-              "name": "edit"
-            },
-            {
-              "name": "publish"
-            }
-          ]
-        },
-        {
-          "name": "05_colorscript",
-          "children": [
-            {
-              "name": "edit"
-            },
-            {
-              "name": "publish"
-            }
-          ]
-        },
-        {
-          "name": "06_key_shot",
-          "children": [
-            {
-              "name": "edit"
-            },
-            {
-              "name": "publish"
-            }
-          ]
-        },
-        {
-          "name": "07_concept_design"
-        }
-      ]
-    },
-    {
-      "name": "04_asset",
-      "children": [
-        {
-          "name": "character"
-        },
-        {
-          "name": "FX"
-        },
-        {
-          "name": "prop"
-        },
-        {
-          "name": "set"
-        }
-      ]
-    },
-    {
-      "name": "05_shot",
-      "children": [
-        {
-          "name": "_credits"
-        },
-        {
-          "name": "_master_camera_"
-        },
-        {
-          "name": "_master_layout"
-        }
-      ]
-    },
-    {
-      "name": "06_review"
-    },
-    {
-      "name": "07_editing",
-      "children": [
-        {
-          "name": "input_shot"
-        },
-        {
-          "name": "input_sound"
-        },
-        {
-          "name": "output"
-        }
-      ]
-    },
-    {
-      "name": "08_test"
-    },
-    {
-      "name": "09_print",
-      "children": [
-        {
-          "name": "maya",
-          "children": [
-            {
-              "name": "assets"
-            },
-            {
-              "name": "autosave"
-            },
-            {
-              "name": "cache",
-              "children": [
-                {
-                  "name": "bifrost"
-                },
-                {
-                  "name": "nCache"
-                },
-                {
-                  "name": "particles"
-                }
-              ]
-            },
-            {
-              "name": "clips"
-            },
-            {
-              "name": "data"
-            },
-            {
-              "name": "images",
-              "children": [
-                {
-                  "name": "edits"
-                }
-              ]
-            },
-            {
-              "name": "movies"
-            },
-            {
-              "name": "postprod",
-              "children": [
-                {
-                  "name": "input"
-                },
-                {
-                  "name": "output"
-                }
-              ]
-            },
-            {
-              "name": "renderData",
-              "children": [
-                {
-                  "name": "depth"
-                },
-                {
-                  "name": "fur",
-                  "children": [
-                    {
-                      "name": "furAttrMap"
-                    },
-                    {
-                      "name": "furEqualMap"
-                    },
-                    {
-                      "name": "furFiles"
-                    },
-                    {
-                      "name": "furImages"
-                    },
-                    {
-                      "name": "furShadowMap"
-                    }
-                  ]
-                },
-                {
-                  "name": "iprImages"
-                },
-                {
-                  "name": "shaders"
-                }
-              ]
-            },
-            {
-              "name": "renderman"
-            },
-            {
-              "name": "scenes",
-              "children": [
-                {
-                  "name": "backup"
-                },
-                {
-                  "name": "edits"
-                }
-              ]
-            },
-            {
-              "name": "scripts"
-            },
-            {
-              "name": "sound"
-            },
-            {
-              "name": "sourceimages",
-              "children": [
-                {
-                  "name": "3dPaintTextures"
-                },
-                {
-                  "name": "edits"
-                },
-                {
-                  "name": "environment"
-                },
-                {
-                  "name": "imagePlane"
-                },
-                {
-                  "name": "imageSequence"
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "10_jury"
-    }
-  ]
-}
+struct_pipelineESMA = {'name': 'projectName', 
+                       'children': [{'name': '00_management'},
+              {'name': '01_external_data'},
+              {'name': '02_ressource'},
+              {'children': [{'children': [{'name': 'edit'},
+                                          {'name': 'publish'}],
+                             'name': '01_scenario'},
+                            {'children': [{'name': 'edit'},
+                                          {'name': 'publish'}],
+                             'name': '02_storyboard'},
+                            {'children': [{'name': 'edit'},
+                                          {'name': 'publish'}],
+                             'name': '03_lumascript'},
+                            {'children': [{'name': 'edit'},
+                                          {'name': 'publish'}],
+                             'name': '04_colorscript'},
+                            {'children': [{'name': 'edit'},
+                                          {'name': 'publish'}],
+                             'name': '05_key_shot'},
+                            {'name': '06_concept_design'}],
+               'name': '03_preprod'},
+              {'children': [{'name': 'character'},
+                            {'name': 'FX'},
+                            {'name': 'item'},
+                            {'name': 'prop'},
+                            {'name': 'set'}],
+               'name': '04_asset'},
+              {'children': [{'name': '_credits'},
+                            {'name': '_masterCamera'},
+                            {'name': '_RLO_roughLayout'},
+                            {'name': '_TLO_sequenceLayout'}],
+               'name': '05_shot'},
+              {'name': '06_review'},
+              {'children': [{'name': 'input_shot'},
+                            {'name': 'input_sound'},
+                            {'name': 'output'}],
+               'name': '07_editing'},
+              {'name': '08_test'},
+              {'children': [{'children': [{'name': 'assets'},
+                                          {'name': 'autosave'},
+                                          {'children': [{'name': 'bifrost'},
+                                                        {'name': 'nCache'},
+                                                        {'name': 'particles'}],
+                                           'name': 'cache'},
+                                          {'name': 'clips'},
+                                          {'name': 'data'},
+                                          {'children': [{'name': 'edits'}],
+                                           'name': 'images'},
+                                          {'name': 'movies'},
+                                          {'children': [{'name': 'input'},
+                                                        {'name': 'output'}],
+                                           'name': 'postprod'},
+                                          {'children': [{'name': 'depth'},
+                                                        {'children': [{'name': 'furAttrMap'},
+                                                                      {'name': 'furEqualMap'},
+                                                                      {'name': 'furFiles'},
+                                                                      {'name': 'furImages'},
+                                                                      {'name': 'furShadowMap'}],
+                                                         'name': 'fur'},
+                                                        {'name': 'iprImages'},
+                                                        {'name': 'shaders'}],
+                                           'name': 'renderData'},
+                                          {'name': 'renderman'},
+                                          {'children': [{'name': 'backup'},
+                                                        {'name': 'edits'}],
+                                           'name': 'scenes'},
+                                          {'name': 'scripts'},
+                                          {'name': 'sound'},
+                                          {'children': [{'name': '3dPaintTextures'},
+                                                        {'name': 'edits'},
+                                                        {'name': 'environment'},
+                                                        {'name': 'imagePlane'},
+                                                        {'name': 'imageSequence'}],
+                                           'name': 'sourceimages'}],
+                             'name': '_template_print'}],
+               'name': '09_print'},
+              {'name': '10_jury'}]}
+
+
 assets_pipelineESMA = './04_asset'
 shots_pipelineESMA = './05_shot'

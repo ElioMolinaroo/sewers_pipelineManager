@@ -1,6 +1,7 @@
 from anytree import Node
 from anytree.exporter import DictExporter
 
+import pprint
 
 # Utils
 def inputOutput(parent_node):
@@ -22,6 +23,7 @@ def houdiniProject(parent_node):
     Node('sim', parent=parent_node)
     Node('tex', parent=parent_node)
     Node('video', parent=parent_node)
+    Node('workFiles', parent=parent_node)
 
 
 def mayaProject(parent_node):
@@ -48,10 +50,10 @@ def mayaProject(parent_node):
     Node('assetLayout', parent=publish)
     Node('cloth', parent=publish)
     Node('dressing', parent=publish)
-    Node('geo', parent=publish)
     Node('groom', parent=publish)
     Node('lightRig', parent=publish)
     Node('lookdev', parent=publish)
+    Node('modeling', parent=publish)
     Node('rig', parent=publish)
     Node('shader', parent=publish)
 
@@ -71,17 +73,15 @@ maya = Node('maya', parent=root)
 mayaProject(maya)
 nuke = Node('nuke', parent=root)
 inputOutput(nuke)
-Node('paint_2D', parent=root)
-paint = Node('paint_3D', parent=root)
-Node('mari', parent=paint)
-Node('substance', parent=paint)
-photogrammetry = Node('photogrammetry', parent=root)
-inputOutput(photogrammetry)
+paint2d = Node('paint_2D', parent=root)
+Node('photoshop', parent=paint2d)
+Node('procreate', parent=paint2d)
+paint3d = Node('paint_3D', parent=root)
+Node('mari', parent=paint3d)
+Node('substance', parent=paint3d)
 Node('preprod', parent=root)
 Node('review', parent=root)
 Node('sculpt', parent=root)
-wrap = Node('wrap', parent=root)
-inputOutput(wrap)
 
 
 # Export the tree as nested dictionaries
@@ -89,4 +89,5 @@ exporter = DictExporter()
 nested_dict = exporter.export(root)
 
 # Print the nested dictionaries
-print(nested_dict)
+pprint.pprint(nested_dict)
+
