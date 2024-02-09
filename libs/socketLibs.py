@@ -1,5 +1,6 @@
 import socket
 import subprocess
+import psutil
 
 from apps import socketApp
 
@@ -57,13 +58,19 @@ def statusBarConnectionStatus(ui, connection_status: str, status_colour: str):
 
 # Checks if a given process is running
 def isProgramOpen(process_name):
-    call = 'TASKLIST', '/FI', 'imagename eq %s' % process_name
+    '''call = 'TASKLIST', '/FI', 'imagename eq %s' % process_name
     # use built-in check_output right away
     output = subprocess.check_output(call).decode()
     # check in last line for process name
     last_line = output.strip().split('\r\n')[-1]
     # because Fail message could be translated
-    return last_line.lower().startswith(process_name.lower())
+    return last_line.lower().startswith(process_name.lower())'''
+
+    for process in psutil.process_iter(['name']):
+        if process.info['name'] == process_name:
+            return True
+    return False
+
 
 
 # Check if SEWERS are connected to Maya

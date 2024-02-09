@@ -633,12 +633,17 @@
                    </item>
                    <item>
                     <property name="text">
-                     <string>FX</string>
+                     <string>item</string>
                     </property>
                    </item>
                    <item>
                     <property name="text">
                      <string>prop</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>FX</string>
                     </property>
                    </item>
                    <item>
@@ -969,12 +974,17 @@ QPushButton:focus {
                </item>
                <item>
                 <property name="text">
-                 <string>FX</string>
+                 <string>item</string>
                 </property>
                </item>
                <item>
                 <property name="text">
                  <string>prop</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>FX</string>
                 </property>
                </item>
                <item>

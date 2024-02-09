@@ -97,7 +97,7 @@ def createShot(ui, nice_shot_name):
     # Create the shot folders
     projectLibs.createFolderStructure(folder_structure, shots_path)
 
-    # Create the comments database
+    '''# Create the comments database
     with open(str(shots_path / safe_asset_name / '_do_not_touch_' / 'comments_database.json'), 'w') as file:
         file.write('[]')
         file.close()
@@ -112,7 +112,7 @@ def createShot(ui, nice_shot_name):
     master = True if '_master_layout' in safe_asset_name else False
     sequence = creatorLibs.buildSequenceNiceName(safe_asset_name)
 
-    #creatorLibs.addShotToDatabase(safe_asset_name, shots_path, sequence, master)
+    #creatorLibs.addShotToDatabase(safe_asset_name, shots_path, sequence, master)'''
 
     # Update shot and asset UI
     uiApp.browserUpdateShots(ui)

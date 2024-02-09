@@ -29,8 +29,8 @@ global proc shelf_SEWERS () {
         -imageOverlayLabel "connect" 
         -overlayLabelColor 0.8 0.8 0.8 
         -overlayLabelBackColor 0 0 0 0.5 
-        -image "C:/DEV/sewersPipeline/sewers_pipelineManager/icons/sewersConnectAlt.png"
-        -image "C:/DEV/sewersPipeline/sewers_pipelineManager/icons/sewersConnectAlt.png"
+        -image "C:/Users/3D3A/Desktop/sewersPipeline/sewers_pipelineManager/icons/sewersConnectAlt.png"
+        -image "C:/Users/3D3A/Desktop/sewersPipeline/sewers_pipelineManager/icons/sewersConnectAlt.png"
         -style "iconOnly" 
         -marginWidth 0
         -marginHeight 1
@@ -64,8 +64,8 @@ global proc shelf_SEWERS () {
         -imageOverlayLabel "version" 
         -overlayLabelColor 0.8 0.8 0.8 
         -overlayLabelBackColor 0 0 0 0.5 
-        -image "C:/DEV/sewersPipeline/sewers_pipelineManager/icons/saveVersionAlt.png"
-        -image "C:/DEV/sewersPipeline/sewers_pipelineManager/icons/saveVersionAlt.png"
+        -image "C:/Users/3D3A/Desktop/sewersPipeline/sewers_pipelineManager/icons/saveVersionAlt.png"
+        -image "C:/Users/3D3A/Desktop/sewersPipeline/sewers_pipelineManager/icons/saveVersionAlt.png"
         -style "iconOnly" 
         -marginWidth 0
         -marginHeight 1
@@ -99,8 +99,8 @@ global proc shelf_SEWERS () {
         -imageOverlayLabel "publish" 
         -overlayLabelColor 0.8 0.8 0.8 
         -overlayLabelBackColor 0 0 0 0.5 
-        -image "C:/DEV/sewersPipeline/sewers_pipelineManager/icons/publishAlt.png"
-        -image "C:/DEV/sewersPipeline/sewers_pipelineManager/icons/publishAlt.png"
+        -image "C:/Users/3D3A/Desktop/sewersPipeline/sewers_pipelineManager/icons/publishAlt.png"
+        -image "C:/Users/3D3A/Desktop/sewersPipeline/sewers_pipelineManager/icons/publishAlt.png"
         -style "iconOnly" 
         -marginWidth 0
         -marginHeight 1
