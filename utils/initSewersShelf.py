@@ -12,7 +12,7 @@ icons_path = sewers_path / 'icons'
 shutil.copy(base_shelf_path, sewers_shelf_path)
 
 
-# Updates the Sewers' path in the scripts inside the shelf
+'''# Updates the Sewers' path in the scripts inside the shelf
 def updateSewersPath(search_string, replacement_line):
     with open(sewers_shelf_path, 'rt') as file:
         data = file.read()
@@ -33,7 +33,7 @@ def updateSewersPath(search_string, replacement_line):
     with open(sewers_shelf_path, 'wt') as file:
         data = data.replace(source_string, replacement_line)
         file.write(data)
-        file.close()
+        file.close()'''
 
 
 # Updates the icons' path in the scripts inside the shelf
@@ -54,7 +54,7 @@ def updateIconsPath(search_string, path_to_icons):
                         icon_name = source_string.split('/')[-1]
                         icon_name = icon_name.replace('" \n', '')
                         new_path = path_to_icons / icon_name
-                        replacement_line = f'        -image "{new_path.as_posix()}'
+                        replacement_line = f'        -image "{new_path.as_posix()}"\n'
                         data = data.replace(source_string, replacement_line)
         file.flush()
         file.close()
@@ -83,7 +83,7 @@ def getMayaShelvesPath():
 # Main Function
 def initSewersShelf():
     # Modify the shelf inside of Maya
-    updateSewersPath('path_to_sewers = ', correct_path_line)
+    #updateSewersPath('path_to_sewers = ', correct_path_line)
     updateIconsPath('-image ', icons_path)
     updateIconsPath('-image1 ', icons_path)
 

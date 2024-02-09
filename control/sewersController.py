@@ -1,5 +1,6 @@
 import shutil
 import time
+import os
 from pathlib import Path
 
 from PyQt6.QtGui import QIcon
@@ -420,16 +421,57 @@ def savePublishProcess(ui):
         # Get the path and name of the current file opened in Maya
         path = socketApp.sendMayaCommandProcess(ui, 'cmds.file(query=1, sceneName=1)')
         name = socketApp.sendMayaCommandProcess(ui, 'cmds.file(query=1, sceneName=1, shortName=1)')
-        # Save the current file
-        socketApp.sendMayaCommandProcess(ui, 'cmds.file(save=1, type="mayaAscii")')
-        # Check if there is already a publish file
-        test_publish_info = actionButtonsApp.getPublishInfo(path)
-        if len(test_publish_info) == 0:
-            print("\nERROR: the file couldn't be published as there is no publish folder in the project...\n")
+        if "_E_" not in name:
+            raise NameError("It appears the file you're trying to publish isn't an edit.")
         else:
-            file_path, publish_exists = test_publish_info
-            # Publish the file
-            actionButtonsApp.savePublish(publish_exists, name, file_path, path)
+            # Save the current file
+            socketApp.sendMayaCommandProcess(ui, 'cmds.file(save=1, type="mayaAscii")')
+            # Check if there is already a publish file
+            test_publish_info = actionButtonsApp.getPublishInfo(path)
+            if len(test_publish_info) == 0:
+                print("\nERROR: the file couldn't be published as there is no publish folder in the project...\n")
+            else:
+                file_path, publish_exists, backup_path, publish_name = test_publish_info
+                # Publish the file
+                #actionButtonsApp.savePublish(publish_exists, name, file_path, path)
+
+                # Start the Publish process
+                if publish_exists is True:
+                    publish_backups = os.listdir(str(backup_path))
+                    raw_name = Path(publish_name).stem
+                    extension = Path(publish_name).suffix
+                    file_backup_path = Path(backup_path) / f"{raw_name}_{str(len(publish_backups)+1).zfill(3)}{extension}"
+
+                    Path(file_path).rename(file_backup_path)
+                    socketApp.sendMayaCommandProcess(ui, 
+    f'''from maya import cmds
+if cmds.objExists("publish") is False:
+    raise KeyError("There is no publish set in your scene, make sure to create one and put everything to be published inside")
+elif cmds.sets("publish", q=1) is None:
+    raise ValueError("Your publish set seems to be empty.")
+else:
+    publish_contents = cmds.sets("publish", q=1)
+    cmds.select(publish_contents, r=1, ne=1)
+    cmds.file("{Path(file_path).as_posix()}", typ="mayaBinary", es=1)
+    cmds.select(d=1)''')
+                    
+                elif publish_exists is False:
+                    # Create backup folder
+                    Path(backup_path).mkdir(parents=True, exist_ok=True)
+                    socketApp.sendMayaCommandProcess(ui, 
+    f'''from maya import cmds
+if cmds.objExists("publish") is False:
+    raise KeyError("There is no publish set in your scene, make sure to create one and put everything to be published inside")
+elif cmds.sets("publish", q=1) is None:
+    raise ValueError("Your publish set seems to be empty.")
+else:
+    publish_contents = cmds.sets("publish", q=1)
+    cmds.select(publish_contents, r=1, ne=1)
+    cmds.file("{Path(file_path).as_posix()}", typ="mayaBinary", es=1)
+    cmds.select(d=1)''')
+
+                print(f'\n{name.upper()} was published successfully.\n')
+
 
             # Embed the saved by data into the file
             #current_username = loginLibs.getCurrentUsername()

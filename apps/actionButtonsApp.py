@@ -43,7 +43,7 @@ def getPublishInfo(old_path: str):
         root_path = Path(root_path) / 'publish'
 
         path_to_file = path_to_file.split('_E_')[0]
-        path_to_file = str(path_to_file) + '_P.ma'
+        path_to_file = str(path_to_file) + '_P.mb'
         path_to_file = str(root_path) + path_to_file
 
         # Convert the result to a readable output
@@ -53,8 +53,9 @@ def getPublishInfo(old_path: str):
         publish_path = Path(str(file_path).removesuffix(file_name))
 
         publish_exists = file_path.is_file()
+        backup_path = publish_path / "backup"
 
-        return [file_path, publish_exists]
+        return [file_path, publish_exists, backup_path, file_name]
     except:
         return ''
 
@@ -69,7 +70,7 @@ def saveVersion(ui, new_path, new_name, old_name):
     print(f'\n{old_name.upper()} versioned up successfully to {new_name.upper()}.\n')
 
 
-# Saves a publish
+'''# Saves a publish
 def savePublish(publish_exists, new_name, new_path, old_path):
     # Start the Publish process
     if publish_exists is True:
@@ -78,7 +79,7 @@ def savePublish(publish_exists, new_name, new_path, old_path):
     elif publish_exists is False:
         shutil.copy2(old_path, new_path)
 
-    print(f'\n{new_name.upper()} was published successfully.\n')
+    print(f'\n{new_name.upper()} was published successfully.\n')'''
 
 
 # Execute to launch the Publish dialog UI

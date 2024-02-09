@@ -140,16 +140,16 @@ class SewersUI(QMainWindow):
         # Action Buttons module events
         self.saveVersionButton.clicked.connect(lambda: actionButtonsApp.saveVersionConfirmationUI(self, SaveVersionConfirmationUI))
         self.publishButton.clicked.connect(lambda: actionButtonsApp.publishConfirmationUI(self, PublishConfirmationUI))
-        self.playblastButton.clicked.connect(lambda: sewersController.playblastPreProcess(self, PlayblastUI, self.fileManagerColumnView))
+        #self.playblastButton.clicked.connect(lambda: sewersController.playblastPreProcess(self, PlayblastUI, self.fileManagerColumnView))
 
         # Recent Files module events
         self.recentFilesListWidget.itemDoubleClicked.connect(lambda: recentFilesApp.goToSelectedFile(self))
 
         # Viewer module events
         #self.assetIconButton.clicked.connect(lambda: sewersController.thumbnailUpdateProcess(self, self.fileManagerColumnView))
-        self.addCommentButton.clicked.connect(lambda: sewersController.addCommentUI(AddCommentUI))
-        self.reviewCommentsButton.clicked.connect(lambda: sewersController.reviewCommentsUI(ReviewCommentsUI))
-        self.rightHandTabs.currentChanged.connect(lambda: uiApp.updateCommentButtonCount(self, self.fileManagerColumnView))
+        #self.addCommentButton.clicked.connect(lambda: sewersController.addCommentUI(AddCommentUI))
+        #self.reviewCommentsButton.clicked.connect(lambda: sewersController.reviewCommentsUI(ReviewCommentsUI))
+        #self.rightHandTabs.currentChanged.connect(lambda: uiApp.updateCommentButtonCount(self, self.fileManagerColumnView))
 
     # Create the event filter for context menus
     def eventFilter(self, source, event):

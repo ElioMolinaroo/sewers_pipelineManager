@@ -25,12 +25,14 @@ global proc shelf_SEWERS () {
         -flipX 0
         -flipY 0
         -useAlpha 1
+        -font "plainLabelFont" 
         -imageOverlayLabel "connect" 
         -overlayLabelColor 0.8 0.8 0.8 
         -overlayLabelBackColor 0 0 0 0.5 
-        -image "C:/DEV/sewersPipeline/sewers/icons/sewersConnectAlt.png"
+        -image "C:/DEV/sewersPipeline/sewers_pipelineManager/icons/sewersConnectAlt.png" 
+        -image1 "C:/DEV/sewersPipeline/sewers_pipelineManager/icons/sewersConnectAlt.png" 
         -style "iconOnly" 
-        -marginWidth 1
+        -marginWidth 0
         -marginHeight 1
         -command "import maya.cmds as cmds\nif not cmds.commandPort(':5051', query=1):\n    cmds.commandPort(name=\":5051\", sourceType=\"python\")" 
         -sourceType "python" 
@@ -58,14 +60,16 @@ global proc shelf_SEWERS () {
         -flipX 0
         -flipY 0
         -useAlpha 1
+        -font "plainLabelFont" 
         -imageOverlayLabel "version" 
         -overlayLabelColor 0.8 0.8 0.8 
         -overlayLabelBackColor 0 0 0 0.5 
-        -image "C:/DEV/sewersPipeline/sewers/icons/saveVersionAlt.png"
+        -image "C:/DEV/sewersPipeline/sewers_pipelineManager/icons/saveVersionAlt.png" 
+        -image1 "C:/DEV/sewersPipeline/sewers_pipelineManager/icons/saveVersionAlt.png" 
         -style "iconOnly" 
-        -marginWidth 1
+        -marginWidth 0
         -marginHeight 1
-        -command "import sys\nfrom pathlib import Path\nimport re\n\npath_to_sewers = 'C:/DEV/sewersPipeline/sewers'\nif not path_to_sewers in sys.path:\n    sys.path.append(path_to_sewers)\n    \nimport maya.cmds as cmds\nfrom libs.loginLibs import getCurrentUsername\n\n\n# Updates the info for the new version file\ndef getNewVersionInfo(old_name: str, old_path: str):\n    try:\n        path_to_file = Path(old_path.replace(old_name, ''))\n\n        # Extracting the variables\n        temp_name, extension = old_name.split('.')\n        raw_numbers = re.split(r'(\\d+)', temp_name)[-2]\n        raw_name = temp_name.replace(raw_numbers, '')\n\n        # Creating the updated variables\n        new_numbers = int(raw_numbers) + 1\n        new_numbers = str(new_numbers).zfill(3)\n        extension.replace(' ', '')\n        # Merging the modified variables to get the output\n        new_name = f'{raw_name}{new_numbers}.{extension}'\n        new_path = path_to_file / new_name\n        new_path = str(new_path.as_posix())\n\n        return [new_name, new_path]\n\n    except Exception as e:\n        print(e)\n        return ''\n\n\n\npath = cmds.file(query=1, sceneName=1)\nname = cmds.file(query=1, sceneName=1, shortName=1)\n\ntest_save_version_info = getNewVersionInfo(name, path)\n\nif len(test_save_version_info) == 0:\n    print(\"ERROR: the file couldn't be versioned up, probably due to an incorrect naming...\")\nelse:\n    new_name, new_path = test_save_version_info\n    # Saves a version of the file\n    cmds.file(rename=new_path)\n    cmds.file(save=True, type=\"mayaAscii\")\n\n    # Embed the saved by data into the file\n    current_username = getCurrentUsername()\n    cmds.fileInfo(\"savedBy\", current_username)\n" 
+        -command "from pathlib import Path\n\nfrom maya import cmds\n\n# Get the data from the scene\nfull_path = cmds.file(query=1, sceneName=1)\nextension = Path(full_path).suffix\nscene_name = str(Path(full_path).name).removesuffix(extension)\npath_to_scene = Path(full_path).parent\n\n# Check if the file follows the correct naming convention\nif \"_E_\" not in scene_name:\n    raise NameError(\"Your file doesn't follow the edit naming convention\")\n\n# Rename the file and the path\nroot_name, number = scene_name.split('_E_')\nnew_scene_name = f\"{root_name}_E_{str(int(number)+1).zfill(3)}{extension}\"\nnew_path = Path(path_to_scene) / new_scene_name\n\n# Increment the file\ncmds.file(rename=new_path)\ncmds.file(save=1)\n" 
         -sourceType "python" 
         -commandRepeatable 1
         -flat 1
@@ -91,14 +95,16 @@ global proc shelf_SEWERS () {
         -flipX 0
         -flipY 0
         -useAlpha 1
+        -font "plainLabelFont" 
         -imageOverlayLabel "publish" 
         -overlayLabelColor 0.8 0.8 0.8 
         -overlayLabelBackColor 0 0 0 0.5 
-        -image "C:/DEV/sewersPipeline/sewers/icons/publishAlt.png"
+        -image "C:/DEV/sewersPipeline/sewers_pipelineManager/icons/publishAlt.png" 
+        -image1 "C:/DEV/sewersPipeline/sewers_pipelineManager/icons/publishAlt.png" 
         -style "iconOnly" 
-        -marginWidth 1
+        -marginWidth 0
         -marginHeight 1
-        -command "import sys\nimport os\nimport shutil\nfrom pathlib import Path\n\npath_to_sewers = 'C:/DEV/sewersPipeline/sewers'\nif not path_to_sewers in sys.path:\n    sys.path.append(path_to_sewers)\n    \nimport maya.cmds as cmds\nfrom libs.loginLibs import getCurrentUsername\n\n\n# Updates the info for the publish file\ndef getPublishInfo(old_path: str):\n    try:\n        root_path, path_to_file = old_path.split('edit')\n        root_path = Path(root_path) / 'publish'\n\n        path_to_file = path_to_file.split('_E_')[0]\n        path_to_file = str(path_to_file) + '_P.ma'\n        path_to_file = str(root_path) + path_to_file\n\n        # Convert the result to a readable output\n        file_path = Path(path_to_file)\n\n        file_name = str(file_path).split('\\\\')[-1]\n        publish_path = Path(str(file_path).replace(file_name, ''))\n\n        publish_exists = file_path.is_file()\n\n        return [file_path, publish_exists]\n    except:\n        return ''\n\n\n# Saves a publish\ndef savePublish(publish_exists, new_name, new_path, old_path):\n    # Start the Publish process\n    if publish_exists is True:\n        os.remove(new_path)\n        shutil.copy2(old_path, new_path)\n    elif publish_exists is False:\n        shutil.copy2(old_path, new_path)\n\n\npath = cmds.file(query=1, sceneName=1)\nname = cmds.file(query=1, sceneName=1, shortName=1)\n\ntest_publish_info = getPublishInfo(path)\n\nif len(test_save_version_info) == 0:\n    print(\"ERROR: the file couldn't be versioned up, probably due to an incorrect naming...\")\nelse:\n    file_path, publish_exists = test_publish_info\n    # Publish the file\n    savePublish(publish_exists, name, file_path, path)\n\n\n    # Embed the saved by data into the file\n    current_username = getCurrentUsername()\n    cmds.fileInfo(\"savedBy\", current_username)\n" 
+        -command "from pathlib import Path\nimport os\n\nfrom maya import cmds\n\n# Get the data from the scene\nfull_path = cmds.file(query=1, sceneName=1)\nextension = Path(full_path).suffix\nscene_name = str(Path(full_path).name).removesuffix(extension)\npath_to_scene = Path(full_path).parent\n\n# Check if a publish folder exists\ntest_path = str(path_to_scene).replace(\"edit\", \"publish\")\nif len(test_path)<=2 and Path(test_path).exists() is False:\n    raise ValueError(\"The folder structure doesn't seem to have a publish folder, check and try again\")\n\n# Check for a publish set\nif cmds.objExists(\"publish\") is False:\n    raise KeyError(\"There is no publish set in your scene, make sure to create one and put everything to be published inside\")\nelif cmds.sets(\"publish\", q=1) is None:\n    raise ValueError(\"Your publish set seems to be empty.\")\n\n# Check if a publish file exists\npublish_name = scene_name.split('_E_')[0] + \"_P.mb\"\npublish_path = Path(test_path) / publish_name\npublish_exists = publish_path.exists()\n\nif publish_exists is True:\n    # Create the backup folder if it doesn't exist\n    backup_path = Path(test_path) / \"backup\"\n    backup_path.mkdir(exist_ok=True)\n\n    # Move the current publish to the backup folder with a different name\n    publish_backups = os.listdir(str(backup_path))\n    raw_name = Path(publish_name).stem\n    extension = Path(publish_name).suffix\n    file_backup_path = Path(backup_path) / f\"{raw_name}_{str(len(publish_backups)+1).zfill(3)}{extension}\"\n\n    Path(publish_path).rename(file_backup_path)\n\n# Publish the file\npublish_contents = cmds.sets(\"publish\", q=1)\ncmds.select(publish_contents, r=1, ne=1)\ncmds.file(publish_path, typ=\"mayaBinary\", es=1)\ncmds.select(d=1)\n" 
         -sourceType "python" 
         -commandRepeatable 1
         -flat 1
