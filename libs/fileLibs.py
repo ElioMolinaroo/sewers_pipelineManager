@@ -28,6 +28,7 @@ def getItemPath(index):
 
     from ui import uiView
     path = uiView.sewers_window.model.filePath(index)
+    path = str(Path(path))
 
     return path
 
